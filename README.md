@@ -1,22 +1,41 @@
 # Fishing Map
 
-A simple, phone-first fishing map: satellite imagery with **filled lake depth bands**, your own catch log, and recently stocked lakes.
+A simple, phone-first fishing map: satellite imagery with **filled lake depth bands**, your own catch log and saved spots, recently stocked lakes, directions, parking near the water, and a "hidden gems" finder.
 
 **Open it:** https://jayceeninefive-star.github.io/fishing-map/
 (Advanced version with every layer and tool: [index-advanced.html](https://jayceeninefive-star.github.io/fishing-map/index-advanced.html))
 
-## What it shows
-- **Depth bands (Washington lakes):** Washington Dept. of Ecology / USGS lake bathymetry polygons (5 ft bands) for a few hundred WA lakes, loaded for the area on screen at zoom 11 and up.
-- **Depth fallback (coast and big waters):** the NOAA NCEI elevation model, colored into the same depth steps (Puget Sound, coastal US, Lake Washington and other low-lying water).
-- **Recently stocked:** WDFW fish plants from data.wa.gov for the last 30 days, with a NEW badge when stocked within 14 days.
-- **Boat launches:** WDFW water access sites in WA, and OpenStreetMap slipways elsewhere (zoom 12 and up).
-- **My catches:** tap **+** to log a catch with a photo, species, weight, length, lure, depth and a note. Long-press the map to log a catch at that spot. Catches are saved only on your device (IndexedDB).
+Install it: open it in Chrome (Android) and choose **Add to Home Screen** / **Install app**, or in Safari (iPhone) tap Share → **Add to Home Screen**. The app shell then opens without a signal. Map tiles and data you've already viewed come from the cache. Anything new needs a connection.
 
-The layers button switches between depth and plain satellite.
+## Tabs
+- **Map:** the map itself. Tap a lake's depth bands for the **lake info sheet**, which has area, max depth, depth bands, recent WDFW stocking, launches and parking, current conditions (Open-Meteo: temperature, wind, pressure trend, sunrise and sunset), an approximate solunar bite window, drop-offs, and WDFW links.
+- **Spots:** your saved spots, sorted by distance from you, with search, plus **Export backup / Import**. The backup is a GeoJSON file of spots and catches, with photos included as data URLs.
+- **Gems:** ranks the surveyed lakes in view (Washington, zoom 11+) with a 0–100 score and a one-line reason. It's a guess from map data, not a promise of fish. Lakes with no public access found are hidden.
 
-## Notes
-- **Not for navigation.** Depths are approximate, and many surveys are decades old.
-- There is no free contour data for most small lakes outside Washington.
-- One HTML file. Leaflet and Leaflet.markercluster come from a CDN, and no API keys are needed.
+## Adding things
+- **+** → Log a catch (photo, species, weight, length, lure, depth, note) or Save a spot (name, type: hot spot, drop-off, weed bed, dock, shore access, parking or launch, notes, optional photo).
+- **Long-press the map** to log a catch, save a spot, find parking, or get directions for that exact point.
+- **★ on any card** (stocked lake, launch, parking, drop-off, lake) saves it to My Spots. Tap it again to remove it.
+- Spot cards have Directions, Parking, Share (a link like `?lat=..&lng=..&name=..` that opens the map at that spot), Edit and Delete.
 
-Data: Esri World Imagery, WA Ecology / USGS, WDFW, data.wa.gov, NOAA NCEI, OpenStreetMap contributors (Nominatim, Overpass), Photon.
+## Directions and parking
+- **Directions** opens a sheet with Google Maps, Apple Maps (iPhone/iPad only) and Waze links, the straight-line distance from you, and a rough drive time from the free OSRM demo router. A dashed line runs from you to the spot.
+- **Parking** layer: OpenStreetMap `amenity=parking` (lot or street, free or paid, capacity where tagged; private lots are skipped) within ~400 m of water (USGS NHD and lake depth outlines) or of a launch, plus WDFW water access areas. **Find parking** on a card zooms to the nearest one and draws the straight-line walk to the water or spot.
+- WDFW water access areas require a **Discover Pass or a WDFW Vehicle Access Pass**. The Vehicle Access Pass comes free with most annual fishing and hunting licenses, but not razor-clam or shellfish-only ones. ([WDFW rules](https://wdfw.wa.gov/licenses/parking))
+
+## How the Gems score works
+- Structure, up to 35: max depth, number of 5 ft bands, and the steepest 10 ft drop (from the depth polygons).
+- Stocking, up to 20: a WDFW plant within 14 days scores 20, within 30 days 12.
+- Low pressure, up to 20: small lake, no motorized WDFW launch or marina, and few OSM parks, piers, fishing spots or lots nearby. Distance from roads is not measured.
+- Public access, up to 15: a WDFW access site, an OSM public park, parking, pier or fishing spot, or a WDFW-listed shoreline.
+- Streams, up to 10: USGS NHD creeks touching the shore.
+
+Small markers on the map show the drop-off hotspots, where depth changes fastest.
+
+## Notes and limits
+- **Not for navigation.** Depths are approximate, and many surveys are decades old. Depth bands, drop-offs and Gems cover only the few hundred WA lakes that have Ecology surveys.
+- Overpass (OSM) public servers are sometimes slow or down. When they are, OSM parking and the OSM part of the pressure score are missing, but WDFW sites still show.
+- The solunar bite window is folklore. The times come from moon transit, rise and set (SunCalc).
+- Spots and catches live only on this device. Export a backup now and then.
+
+Data: Esri World Imagery, WA Ecology / USGS lake bathymetry (ArcGIS Online + Ecology MapServer), WDFW, data.wa.gov, USGS NHD, NOAA NCEI, OpenStreetMap contributors (Overpass, Nominatim), Photon, Open-Meteo, OSRM, SunCalc.
