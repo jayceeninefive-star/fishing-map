@@ -36,7 +36,7 @@ a{color:var(--blue)}
 #locate{position:fixed;z-index:1000;right:14px;bottom:calc(164px + env(safe-area-inset-bottom))}
 #add{position:fixed;z-index:1000;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));width:62px;height:62px;border-radius:50%;background:var(--blue);color:#fff;font-size:36px;line-height:1;box-shadow:0 6px 18px rgba(30,143,224,.55),0 2px 6px rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center}
 #tabbar{position:fixed;z-index:1000;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));display:flex;gap:2px;background:rgba(255,255,255,.97);border-radius:26px;padding:4px;box-shadow:0 4px 16px rgba(0,0,0,.28)}
-#tabbar button{display:flex;align-items:center;gap:6px;padding:9px 15px;border-radius:22px;font-size:14px;font-weight:700;color:var(--grey)}
+#tabbar button{display:flex;align-items:center;gap:6px;padding:0 16px;min-height:44px;border-radius:22px;font-size:14px;font-weight:700;color:var(--grey)}
 #tabbar button.on{background:var(--navy);color:#fff}
 body.card-open #add,body.card-open #locate,body.card-open #tabbar,body.sheet-open #add,body.sheet-open #locate{display:none}
 #legend{position:fixed;z-index:999;left:12px;bottom:calc(76px + env(safe-area-inset-bottom));background:rgba(11,42,74,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#fff;border-radius:10px;padding:6px 7px;font-size:10px;display:none}
@@ -45,6 +45,7 @@ body.card-open #add,body.card-open #locate,body.card-open #tabbar,body.sheet-ope
 body.card-open #legend,body.sheet-open #legend{display:none!important}
 .leaflet-control-attribution{font-size:9px;background:rgba(0,0,0,.45)!important;color:#dfe8ee;max-width:60vw;border-radius:6px 0 0 0;max-height:15px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;cursor:pointer}
 .leaflet-control-attribution.full{max-height:none;white-space:normal}
+.leaflet-bottom.leaflet-right{margin-bottom:env(safe-area-inset-bottom)}
 .leaflet-control-attribution a{color:#bfe6ff}
 .pinw{position:relative;width:30px;height:40px}
 .pinw .shadow{position:absolute;left:8px;bottom:-3px;width:14px;height:5px;border-radius:50%;background:rgba(0,0,0,.35);filter:blur(1px)}
@@ -70,7 +71,7 @@ body.card-open #card{transform:none}
 #card .ph{position:relative;width:42%;flex:none;background:#123f66 center/cover no-repeat;overflow:hidden;border-radius:14px;margin:6px;display:flex;align-items:center;justify-content:center;font-size:54px}
 #card .ribbon{position:absolute;left:-30px;top:12px;width:110px;transform:rotate(-45deg);background:var(--orange);color:#fff;text-align:center;font-size:11px;font-weight:800;letter-spacing:.05em;padding:3px 0;box-shadow:0 2px 4px rgba(0,0,0,.25)}
 #card .body{flex:1;padding:12px 12px 8px 8px;display:flex;flex-direction:column;min-width:0}
-#card .hd{display:flex;align-items:center;gap:8px;padding-right:22px}
+#card .hd{display:flex;align-items:center;gap:8px;padding-right:30px}
 .av{width:30px;height:30px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;background:var(--blue)}
 #card .nm{font-weight:700;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sub{color:var(--grey);font-size:12px}
@@ -78,7 +79,7 @@ body.card-open #card{transform:none}
 #card .note{margin:8px 0 6px;font-size:14.5px;line-height:1.3;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 #card .stats{display:flex;gap:12px;align-items:center;font-size:13px;font-weight:600;flex-wrap:wrap}
 #card .stats span{display:flex;align-items:center;gap:5px}
-#card .x{position:absolute;right:8px;top:8px;width:26px;height:26px;border-radius:50%;background:#eef2f5;color:#556;font-size:15px;display:flex;align-items:center;justify-content:center}
+#card .x{position:absolute;right:2px;top:2px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,#eef2f5 0 13px,transparent 14px);color:#556;font-size:15px;display:flex;align-items:center;justify-content:center}
 .acts2{display:flex;border-top:1px solid var(--line)}
 .acts2 button,.acts2 a{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 2px 9px;font-size:11px;font-weight:700;color:var(--navy);text-decoration:none}
 .acts2 button:active{background:#f2f6f9}
@@ -89,7 +90,7 @@ body.card-open #card{transform:none}
 body.sheet-open #sheet{transform:none}
 #sheet .grab{width:40px;height:5px;border-radius:3px;background:#d5dbe0;margin:0 auto 8px}
 #sheet h3{margin:2px 0 4px;font-size:19px}
-#sheet .shx{position:absolute;right:12px;top:12px;width:30px;height:30px;border-radius:50%;background:#eef2f5;color:#556;font-size:16px}
+#sheet .shx{position:absolute;right:5px;top:5px;width:44px;height:44px;border-radius:50%;background:radial-gradient(circle,#eef2f5 0 15px,transparent 16px);z-index:2;color:#556;font-size:16px}
 .sec{margin:14px 0 6px;font-size:11px;font-weight:800;color:var(--grey);text-transform:uppercase;letter-spacing:.06em}
 .big{display:flex;align-items:center;gap:12px;width:100%;padding:14px;border-radius:14px;background:#f3f7fa;margin:8px 0;font-weight:700;font-size:16px;text-align:left}
 .big .ic{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;background:#fff}
@@ -101,15 +102,16 @@ body.sheet-open #sheet{transform:none}
 .sw.on{background:var(--teal)}.sw.on:after{left:21px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .f label{display:block;font-size:11px;color:var(--grey);font-weight:700;margin:0 0 3px 2px;text-transform:uppercase;letter-spacing:.04em}
+.f input,.inp{min-height:44px}
 .f input,.f textarea,.inp{width:100%;border:1px solid #dde3e8;border-radius:10px;padding:9px 10px;font:inherit;font-size:16px;background:#f9fbfc;color:var(--ink)}
 .f.full{grid-column:1/-1}
 .photoBox{height:130px;border-radius:14px;background:#eef3f7 center/cover no-repeat;display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0 10px}
-.pbtn{background:#fff;border-radius:20px;padding:8px 14px;font-size:14px;font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+.pbtn{background:#fff;border-radius:22px;padding:0 16px;min-height:44px;font-size:14px;font-weight:600;box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 10px}
-.chip{padding:7px 11px;border-radius:18px;background:#eef3f7;font-size:13px;font-weight:600}
+.chip{display:inline-flex;align-items:center;min-height:44px;padding:0 13px;border-radius:22px;background:#eef3f7;font-size:13px;font-weight:600}
 .chip.on{background:var(--navy);color:#fff}
 .locLine{font-size:12px;color:var(--grey);margin:10px 2px;display:flex;justify-content:space-between;gap:8px;align-items:center}
-.locLine button{color:var(--blue);font-weight:700;font-size:12px}
+.locLine button{color:var(--blue);font-weight:700;font-size:12px;min-height:44px;padding:0 6px}
 .acts{display:flex;gap:10px;margin-top:10px}
 .acts button,.acts a{flex:1;height:46px;border-radius:23px;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
 .primary{background:var(--blue);color:#fff!important}.ghost{background:#eef2f5;color:var(--ink)!important}
@@ -143,12 +145,18 @@ details summary{cursor:pointer;color:var(--blue);font-weight:700;font-size:13px;
 .dpop .dv{font-size:22px;font-weight:800;color:var(--navy)}
 .dpop .ds{color:#3a4652;margin:2px 0 4px}
 .dpop .db{font-size:11px;color:var(--grey)}
-.dpop .dbtn{margin-top:7px;background:#eef5fa;border-radius:14px;padding:6px 10px;font-weight:700;font-size:12px;color:var(--blue)}
+.dpop .dbtn{margin-top:7px;background:#eef5fa;border-radius:22px;padding:0 14px;min-height:44px;font-weight:700;font-size:12px;color:var(--blue)}
 .badge{display:inline-flex;gap:6px;align-items:center;background:#e3f6fb;color:#0b4a66;border-radius:10px;padding:5px 9px;font-size:12px;font-weight:700;margin:6px 0 2px}
 .seg{display:flex;background:#eef2f5;border-radius:12px;padding:3px;margin:6px 0}
-.seg button{flex:1;padding:7px;border-radius:10px;font-weight:700;font-size:13px;color:var(--grey)}
+.seg button{flex:1;padding:0 7px;min-height:44px;border-radius:10px;font-weight:700;font-size:13px;color:var(--grey)}
 .seg button.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.15)}
-#toast{position:fixed;z-index:1300;left:50%;top:calc(66px + env(safe-area-inset-top));transform:translateX(-50%);background:rgba(11,42,74,.94);color:#fff;padding:8px 14px;border-radius:18px;font-size:13px;display:none;max-width:90vw;text-align:center}
+#toast{position:fixed;z-index:1300;left:50%;top:calc(104px + env(safe-area-inset-top));transform:translateX(-50%);background:rgba(11,42,74,.94);color:#fff;padding:8px 14px;border-radius:18px;font-size:13px;display:none;max-width:90vw;text-align:center}
+/* v5 */
+.moving .leaflet-bands-pane,.moving .leaflet-fallback-pane,.moving .leaflet-enc-pane{filter:none!important}
+.leaflet-contours-pane canvas,.leaflet-enc-pane canvas{pointer-events:none}
+#status{position:fixed;z-index:1250;left:50%;transform:translateX(-50%);top:calc(64px + env(safe-area-inset-top));max-width:min(92vw,520px);background:rgba(11,42,74,.86);color:#e8f6ff;font-size:12px;line-height:1.3;padding:6px 12px;border-radius:14px;display:none;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+#upd{white-space:nowrap;position:fixed;z-index:1400;left:50%;transform:translateX(-50%);top:calc(64px + env(safe-area-inset-top));min-height:44px;padding:0 18px;border-radius:22px;background:var(--orange);color:#fff;font-weight:800;font-size:14px;display:none;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+#results div{min-height:44px}
 </style>
 </head>
 <body>
@@ -156,7 +164,7 @@ details summary{cursor:pointer;color:var(--blue);font-weight:700;font-size:13px;
 <div id="top">
   <div id="sbox">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
-    <input id="search" type="search" placeholder="Search lakes, rivers, places" autocomplete="off" enterkeyhint="search">
+    <input id="search" aria-label="Search lakes, rivers, places" type="search" placeholder="Search lakes, rivers, places" autocomplete="off" enterkeyhint="search">
     <div id="results"></div>
   </div>
   <button class="rbtn" id="layersBtn" aria-label="Layers" title="Layers">
@@ -164,7 +172,7 @@ details summary{cursor:pointer;color:var(--blue);font-weight:700;font-size:13px;
   </button>
 </div>
 <button class="rbtn" id="locate" aria-label="Locate me"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1e8fe0" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4" fill="#1e8fe0"/><circle cx="12" cy="12" r="8"/><path d="M12 1v3M12 20v3M1 12h3M20 12h3"/></svg></button>
-<button id="add" aria-label="Add">+</button>
+<button id="add" aria-label="Add a catch or spot">+</button>
 <div id="tabbar">
   <button data-tab="map" class="on"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/></svg>Map</button>
   <button data-tab="spots"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7 7 .6-5.3 4.6L18.4 21 12 17.3 5.6 21l1.7-6.8L2 9.6 9 9z"/></svg>Spots</button>
@@ -176,14 +184,32 @@ details summary{cursor:pointer;color:var(--blue);font-weight:700;font-size:13px;
 <input type="file" id="camIn" accept="image/*" capture="environment" hidden>
 <input type="file" id="fileIn" accept="image/*" hidden>
 <input type="file" id="importIn" accept=".json,.geojson,application/json,application/geo+json" hidden>
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="status" role="status" aria-live="polite"></div>
+<button id="upd" aria-label="Update available, tap to reload">⟳ Update available, tap to reload</button>
 <script>
 (function(){
 'use strict';
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function toast(m,ms=2600){const t=$('#toast');t.textContent=m;t.style.display='block';clearTimeout(t._h);t._h=setTimeout(()=>t.style.display='none',ms);}
-async function getJSON(url,opt={},ms=25000){const c=new AbortController();const h=setTimeout(()=>c.abort(),ms);try{const r=await fetch(url,{...opt,signal:c.signal});if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();if(j&&j.error)throw new Error(j.error.message||'error');return j;}finally{clearTimeout(h);}}
+const APP_VERSION='v5.0';window.APP_VERSION=APP_VERSION;
+const inflight=new Set();
+// opt.bb=[w,s,e,n] lets a request be cancelled when the map pans away; opt.signal cancels it explicitly. Cancelled requests reject with e.panned=true and never raise a status note.
+async function getJSON(url,opt={},ms=25000){const{bb,signal,...o}=opt;const c=new AbortController();const h=setTimeout(()=>c.abort(),ms);const rec={bb,c,panned:false};if(bb)inflight.add(rec);
+  if(signal){if(signal.aborted){rec.panned=true;c.abort();}else signal.addEventListener('abort',()=>{rec.panned=true;c.abort();});}
+  try{const r=await fetch(url,{...o,signal:c.signal});if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();if(j&&j.error)throw new Error(j.error.message||'error');return j;}
+  catch(e){if(rec.panned){const x=new Error('cancelled');x.panned=true;throw x;}srcFail(url);throw e;}
+  finally{clearTimeout(h);inflight.delete(rec);}}
+function abortOffscreen(){if(typeof map==='undefined')return;const v=map.getBounds().pad(0.6);for(const r of inflight){const[w,s0,e,n]=r.bb;if(!v.intersects([[s0,w],[n,e]])){r.panned=true;r.c.abort();}}}
+const SRC=[[/overpass|maps\.mail\.ru/,'OpenStreetMap (parking, ponds)'],[/hydro\.nationalmap/,'USGS creeks & water'],[/6lCKYNJLvwTXqrmp/,'WA Ecology lake depths'],[/encdirect/,'NOAA chart depths'],[/ngdc\.noaa/,'NOAA depth model'],[/data\.wa\.gov/,'WDFW stocking'],[/geodataservices\.wdfw/,'WDFW access sites'],[/open-meteo/,'weather']];
+const srcNoted={};
+function srcFail(url){if(!navigator.onLine)return;const m=SRC.find(([re])=>re.test(url));if(!m)return;const now=Date.now();if(now-(srcNoted[m[1]]||0)<180000)return;srcNoted[m[1]]=now;
+  const recent=Object.keys(srcNoted).filter(k=>now-srcNoted[k]<20000);status(`Not responding right now: ${recent.join(', ')}. Showing what loaded.`,8000);}
+function status(m,ms=6000){const t=$('#status');t.textContent=m;t.style.display='block';clearTimeout(t._h);if(ms)t._h=setTimeout(()=>t.style.display='none',ms);}
+$('#status').onclick=()=>$('#status').style.display='none';
+const sleep=ms=>new Promise(r=>setTimeout(()=>r(null),ms));
+const within=(p,ms)=>Promise.race([p,sleep(ms)]);
 function ago(t){const s=(Date.now()-t)/1000;if(s<60)return'now';if(s<3600)return Math.floor(s/60)+'m';if(s<86400)return Math.floor(s/3600)+'h';if(s<86400*30)return Math.floor(s/86400)+'d';if(s<86400*365)return Math.floor(s/86400/30)+'mo';return Math.floor(s/86400/365)+'y';}
 const daysAgo=t=>Math.floor((Date.now()-t)/864e5);
 const PAGES='https://jayceeninefive-star.github.io/fishing-map/';
@@ -226,6 +252,11 @@ const shared=qs.get('lat')&&qs.get('lng')?{lat:+qs.get('lat'),lng:+qs.get('lng')
 const sv=JSON.parse(localStorage.getItem('fm2.view')||'null');
 const map=L.map('map',{zoomControl:false,worldCopyJump:true}).setView(shared?[shared.lat,shared.lng]:sv?[sv.lat,sv.lng]:[47.605,-122.06],shared?shared.z:sv?sv.z:12);
 map.on('moveend',()=>{const c=map.getCenter();localStorage.setItem('fm2.view',JSON.stringify({lat:c.lat,lng:c.lng,z:map.getZoom()}));});
+// v5: drop the costly glow filters while the map animates, cancel requests for cells we panned away from
+map.on('movestart zoomstart',()=>map.getContainer().classList.add('moving'));
+map.on('moveend zoomend',()=>{map.getContainer().classList.remove('moving');abortOffscreen();});
+function netState(){if(!navigator.onLine)status('Offline · showing saved map and data',0);else if(/^Offline/.test($('#status').textContent))status('Back online',2500);}
+addEventListener('offline',netState);addEventListener('online',()=>{netState();map.fire('moveend');});if(!navigator.onLine)setTimeout(netState,0);
 map.attributionControl.setPrefix(false);
 map.attributionControl.getContainer().addEventListener('click',e=>{if(e.target.tagName!=='A')e.currentTarget.classList.toggle('full');});
 map.attributionControl.addAttribution('⚠ Not for navigation');
@@ -338,7 +369,7 @@ const WDFW='https://geodataservices.wdfw.wa.gov/arcgis/rest/services/Application
 let wdfwLakes=[];let lakesLoaded=null;
 function loadWdfwLakes(){if(lakesLoaded)return lakesLoaded;lakesLoaded=getJSON(`${WDFW}/2/query?where=1%3D1&outFields=LakeName,CountyName,SurfaceAcres,ELEV,PublicManagementType,ShorelineAccess,BoatRampAvailable&outSR=4326&f=geojson`,{},40000)
   .then(g=>{wdfwLakes=(g.features||[]).map(f=>({lat:f.geometry.coordinates[1],lng:f.geometry.coordinates[0],name:f.properties.LakeName,county:f.properties.CountyName,acres:f.properties.SurfaceAcres,mgmt:f.properties.PublicManagementType,shore:f.properties.ShorelineAccess,ramp:f.properties.BoatRampAvailable}));return wdfwLakes;}).catch(()=>{lakesLoaded=null;return[];});return lakesLoaded;}
-const AB={LTL:'LITTLE',UPR:'UPPER',LWR:'LOWER',N:'NORTH',S:'SOUTH',E:'EAST',W:'WEST',MT:'MOUNT',ST:'SAINT'};
+const AB={LTL:'LITTLE',UPR:'UPPER',LWR:'LOWER',N:'NORTH',S:'SOUTH',E:'EAST',W:'WEST',MT:'MOUNT',ST:'SAINT',DORTHY:'DOROTHY'};
 const DROP=new Set(['LK','LKS','LAKE','LAKES','POND','PONDS','PD','RES','RESERVOIR','THE']);
 const nkey=n=>String(n||'').toUpperCase().replace(/\bT\d+\b/g,'').replace(/[^A-Z0-9 ]/g,' ').split(/\s+/).filter(Boolean).map(w=>AB[w]||w).filter(w=>!DROP.has(w)&&!/^\d+$/.test(w)).sort().join(' ');
 let stockGroups=[];let stockLoaded=null;
@@ -368,7 +399,9 @@ function loadStocking(){
     for(const p of lakes)idx.set(nkey(p.name)+'|'+String(p.county||'').slice(0,4).toUpperCase(),{lat:p.lat,lng:p.lng,name:p.name});
     for(const f of hl.features||[]){const p={};for(const k in f.properties)p[k.split('.').pop()]=f.properties[k];const k=nkey(p.LakeMapName)+'|'+String(p.CountyName||'').slice(0,4).toUpperCase();if(!idx.has(k))idx.set(k,{lat:f.geometry.coordinates[1],lng:f.geometry.coordinates[0],name:p.LakeMapName+' Lake'});}
     const g=new Map();
-    for(const r of rows){const m=r.release_location.match(/^(.*?)\s*\(([A-Z]{4})[^)]*\)/);if(!m)continue;const hit=idx.get(nkey(m[1])+'|'+m[2]);if(!hit)continue;
+    for(const r of rows){const loc=r.release_location;const cs=[...loc.matchAll(/\(([A-Z]{4})[A-Z]*\)/g)];if(!cs.length)continue;const last=cs[cs.length-1];const cty=last[1];
+      // "ANTILON LK - NORTH (UPPER) (CHEL)", "HOG (CANYON) LK (SPOK)": county is the LAST 4-letter group; try the name with and without the other parenthesised words
+      const base=loc.slice(0,last.index)+loc.slice(last.index+last[0].length);const hit=idx.get(nkey(base)+'|'+cty)||idx.get(nkey(base.replace(/\([^)]*\)/g,' '))+'|'+cty)||idx.get(nkey(base.replace(/\b(NORTH|SOUTH|N|S)\b/g,' '))+'|'+cty);if(!hit)continue;
       const x=g.get(r.release_location)||{name:hit.name,county:(r.county||'').trim(),lat:hit.lat,lng:hit.lng,plants:[]};x.plants.push(r);g.set(r.release_location,x);}
     stockGroups=[...g.values()];
     for(const s of stockGroups){s.ts=Date.parse(s.plants[0].release_start_date);s.total=s.plants.reduce((a,p)=>a+(+p.number_released||0),0);s.species=[...new Set(s.plants.map(p=>p.species))];
@@ -411,7 +444,7 @@ function loadOSM(b){
         if(kind==='feat'){osmFeat(o);continue;}
         if(kind==='parking'){const pk=parkFromOSM(o);if(pk){parking.set(pk.id,pk);pendingPark.push(pk);}}}
         return true;})
-      .catch(()=>{osmCells.delete(k);return false;});osmCells.set(k,pr);return pr;}));
+      .catch(()=>{osmCells.delete(k);return false;});pr._bb=cellBB([w,s,e,n]);osmCells.set(k,pr);return pr;}));
 }
 const isWA=o=>WA.contains([o.lat,o.lng])&&access.size>0;
 function parkFromOSM(o){const t=o.t;if(['private','no'].includes(t.access))return null;
@@ -421,15 +454,8 @@ function parkFromOSM(o){const t=o.t;if(['private','no'].includes(t.access))retur
 
 // ---------- parking near water ----------
 const parking=new Map();let pendingPark=[];
-const waterRings=[];const waterCells=new Map();
-function loadWater(b){
-  return Promise.all(cellsFor(b,0.05).map(([x,y,w,s,e,n])=>{const k=x+':'+y;if(waterCells.has(k))return waterCells.get(k);
-    const q=l=>`https://hydro.nationalmap.gov/arcgis/rest/services/NHDPlus_HR/MapServer/${l}/query?where=${encodeURIComponent(l===9?'ftype IN (390,436,493)':'ftype=460')}&geometry=${w},${s},${e},${n}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=permanent_identifier,gnis_name,ftype,fcode,areasqkm,reachcode&outSR=4326&maxAllowableOffset=0.00005&geometryPrecision=6&resultRecordCount=600&f=geojson`;
-    const pr=Promise.all([getJSON(q(9)).catch(()=>({features:[]})),getJSON(q(8)).catch(()=>({features:[]}))]).then(([a,c])=>{
-      for(const f of[...a.features,...c.features]){const p=f.properties;const id='n'+(p.permanent_identifier||f.id);if(waters.has(id))continue;const ps=polys(f.geometry);if(!ps.length)continue;ps.forEach(pp=>pp.forEach(bbRing));
-        addWater({id,src:'USGS NHD',name:p.gnis_name||null,ftype:+p.ftype,fcode:+p.fcode,areaKm2:+p.areasqkm||null,reach:p.reachcode||null,polys:ps,rings:ps.flat(),outer:ps.map(pp=>pp[0]),pt:interiorPt(ps[0])});}});
-    waterCells.set(k,pr);return pr;}));
-}
+const waterRings=[];
+const loadWater=b=>loadWaters(b);
 function waterEdge(lat,lng){const rings=[...waterRings];
   const lk=lakeAt(lat,lng,500);if(lk)rings.push(...lk.edge);return nearestOnRings(lat,lng,rings);}
 function addParkMarker(pk){if(pk.m)return;pk.m=L.marker([pk.lat,pk.lng],{icon:pk.wdfw?PW_ICON:P_ICON,keyboard:false}).on('click',()=>openParking(pk));parkLayer.addLayer(pk.m);}
@@ -454,7 +480,9 @@ async function loadLaunches(){
 let db;
 function idb(){return db?Promise.resolve(db):new Promise((res,rej)=>{const r=indexedDB.open('fishmap',2);r.onupgradeneeded=()=>{const d=r.result;if(!d.objectStoreNames.contains('catches'))d.createObjectStore('catches',{keyPath:'id'});if(!d.objectStoreNames.contains('spots'))d.createObjectStore('spots',{keyPath:'id'});};r.onsuccess=()=>{db=r.result;res(db);};r.onerror=()=>rej(r.error);});}
 async function dbAll(st){const d=await idb();return new Promise((res,rej)=>{const q=d.transaction(st).objectStore(st).getAll();q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error);});}
-async function dbPut(st,o){const d=await idb();return new Promise((res,rej)=>{const t=d.transaction(st,'readwrite');t.objectStore(st).put(o);t.oncomplete=res;t.onerror=()=>rej(t.error);});}
+async function dbPut1(st,o){const d=await idb();return new Promise((res,rej)=>{const t=d.transaction(st,'readwrite');const fail=()=>rej(t.error||new Error('storage error'));t.oncomplete=res;t.onerror=fail;t.onabort=fail;t.objectStore(st).put(o);});}
+// Safari private mode (and some WebKit builds) can't store Blobs in IndexedDB: fall back to storing the photo as a data URL string.
+async function dbPut(st,o){try{return await dbPut1(st,o);}catch(e){if(o.photo instanceof Blob){o.photo=await toDataURL(o.photo);return dbPut1(st,o);}throw e;}}
 async function dbDel(st,id){const d=await idb();return new Promise((res,rej)=>{const t=d.transaction(st,'readwrite');t.objectStore(st).delete(id);t.oncomplete=res;t.onerror=()=>rej(t.error);});}
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 
@@ -502,7 +530,7 @@ function act(id,icon,label,cls=''){return `<button data-act="${id}" class="${cls
 function stdActs(o,extra=''){const saved=!!spotAt(o.lat,o.lng);return act('dir',I.nav,'Directions')+act('park',I.p,'Parking')+act('star',saved?I.star:I.star0,saved?'Saved':'Save',saved?'on':'')+extra;}
 function showCard(o,html,acts,marker){
   if(selMarker&&selMarker._icon)selMarker._icon.classList.remove('pin-sel');selMarker=marker;if(marker&&marker._icon)marker._icon.classList.add('pin-sel');
-  ctx=o;closeSheet(true);
+  ctx=o;closeSheet(true);$('#card').dataset.w='';
   $('#card').innerHTML=`<div class="row1">${html}</div><div class="acts2">${acts}</div><button class="x" aria-label="Close">✕</button>`;
   $('#card .x').onclick=closeCard;document.body.classList.add('card-open');}
 function closeCard(){document.body.classList.remove('card-open');if(selMarker&&selMarker._icon)selMarker._icon.classList.remove('pin-sel');selMarker=null;}
@@ -520,7 +548,7 @@ $('#card').addEventListener('click',async e=>{const b=e.target.closest('[data-ac
  c.addEventListener('touchend',e=>{if(y0==null)return;const dy=(e.changedTouches[0].clientY-y0)||0;c.style.transition='';c.style.transform='';y0=null;if(dy>60)closeCard();});})();
 const head=(av,avStyle,name,sub)=>`<div class="hd"><div class="av" style="${avStyle}">${av}</div><div style="min-width:0"><div class="nm">${esc(name)}</div><div class="sub">${sub}</div></div></div>`;
 const photoURLs=new Map();
-const blobURL=(id,b)=>{if(!photoURLs.has(id))photoURLs.set(id,URL.createObjectURL(b));return photoURLs.get(id);};
+const blobURL=(id,b)=>{if(typeof b==='string')return b;if(!photoURLs.has(id))photoURLs.set(id,URL.createObjectURL(b));return photoURLs.get(id);};
 function openCatch(c,m){
   const bg=c.photo?`url('${blobURL(c.id,c.photo)}')`:fishArt(c.species);const isNew=Date.now()-c.ts<3*864e5;
   const stats=[c.weight&&`<span>${I.w}${esc(c.weight)} lb</span>`,c.length&&`<span>${I.l}${esc(c.length)}″</span>`,c.depth&&`<span>${I.d}${esc(c.depth)} ft</span>`].filter(Boolean).join('');
@@ -591,10 +619,11 @@ let hadUI=false;map.on('click',()=>{hadUI=document.body.classList.contains('card
 
 // ---------- my location ----------
 let myPos=null;
+let geoErr=null;
 function getMe(force){return new Promise(res=>{if(myPos&&!force&&Date.now()-myPos.t<120000)return res(myPos);if(!navigator.geolocation)return res(null);
-  navigator.geolocation.getCurrentPosition(p=>{myPos={lat:p.coords.latitude,lng:p.coords.longitude,acc:p.coords.accuracy,t:Date.now()};drawMe();res(myPos);},()=>res(null),{enableHighAccuracy:true,timeout:9000,maximumAge:60000});});}
+  navigator.geolocation.getCurrentPosition(p=>{myPos={lat:p.coords.latitude,lng:p.coords.longitude,acc:p.coords.accuracy,t:Date.now()};drawMe();res(myPos);},err=>{geoErr=err&&err.code;res(null);},{enableHighAccuracy:true,timeout:9000,maximumAge:60000});});}
 function drawMe(){me.clearLayers();if(!myPos)return;L.circle([myPos.lat,myPos.lng],{radius:myPos.acc,color:'#1e8fe0',weight:1,fillOpacity:.12,interactive:false}).addTo(me);L.circleMarker([myPos.lat,myPos.lng],{radius:8,color:'#fff',weight:3,fillColor:'#1e8fe0',fillOpacity:1,interactive:false}).addTo(me);}
-$('#locate').onclick=async()=>{const p=await getMe(true);if(p)map.setView([p.lat,p.lng],Math.max(map.getZoom(),15));else toast('Location unavailable');};
+$('#locate').onclick=async()=>{const p=await getMe(true);if(p)map.setView([p.lat,p.lng],Math.max(map.getZoom(),15));else toast(geoErr===1?'Location is blocked. Allow location for this site in your browser settings':!window.isSecureContext?'Location needs https':'Location unavailable right now. Try again outside or with GPS on',4500);};
 
 // ---------- directions ----------
 async function openDirections(o){
@@ -620,12 +649,14 @@ async function openDirections(o){
 
 // ---------- find parking ----------
 async function findParking(o){
-  toast('Looking for parking…',4000);
+  toast('Looking for parking…',10000);
   const b=L.latLngBounds([o.lat-0.012,o.lng-0.018],[o.lat+0.012,o.lng+0.018]);
-  await Promise.all([loadAccess(b),loadWater(b),Promise.race([loadOSM(b),new Promise(r=>setTimeout(r,16000))])]);
+  const osmP=loadOSM(b);await within(Promise.all([loadAccess(b).catch(()=>{}),loadWaters(b).catch(()=>{}),osmP.catch(()=>{})]),9000);
+  const osmOK=await within(osmP.then(r=>r.every(Boolean)).catch(()=>false),0);
   pendingPark.forEach(addParkMarker);pendingPark=[];
   let best=null;for(const pk of parking.values()){const d=hav([pk.lat,pk.lng],[o.lat,o.lng]);if(d<2500&&(!best||d<best.d))best={pk,d};}
-  if(!best){toast('No public parking found nearby in OSM or WDFW data');return;}
+  if(!best){toast(osmOK?'No public parking found nearby in OSM or WDFW data':'No WDFW parking nearby, and OpenStreetMap is busy. Try again in a minute');return;}
+  $('#toast').style.display='none';
   if(!on('parking')){setPref('parking',true);parkLayer.addTo(map);}
   const isLake=o.kind==='lake';
   let tgt={ll:[o.lat,o.lng],label:o.kind==='spot'?'spot':o.kind==='launch'?'launch':'spot'};
@@ -646,9 +677,9 @@ $('#tabbar').onclick=e=>{const b=e.target.closest('button');if(!b)return;const t
 
 // ---------- layers sheet ----------
 const LAYERS=[['bands','Lake depth bands','WA Ecology lake depth polygons, zoom 11+'],['contours','Exact depth contours','Surveyed contour lines with depth labels, zoom 13+'],['enc','NOAA chart depths','ENC depth areas, zoom 10+, soundings at 15+ (Lake Washington, Lake Union, Puget Sound, Columbia…)'],['water','All water bodies','Every lake, pond, reservoir and marsh (USGS NHD + OSM); gray hatch = no depth survey'],['creeks','Creeks','Streams, rivers and canals with inflow/outflow arrows, zoom 12+'],['features','Springs, falls & dams','Small icons at zoom 14+'],['fallback','Coast and big-water depth','NOAA NCEI model for Puget Sound, the coast and big lakes'],['drops','Drop-off hotspots','Where WA lake depth changes fastest'],['stocked','Recently stocked','WDFW fish plants, last 30 days'],['launches','Boat launches','WDFW access sites, plus OSM outside WA'],['parking','Parking near water','OSM lots and street parking within ~400 m of water, plus WDFW access areas'],['catches','My catches',''],['spots','My spots','']];
-$('#layersBtn').onclick=()=>{closeCard();openSheet(`<h3>Map layers</h3>${LAYERS.map(([k,t,s])=>`<div class="tog" data-k="${k}"><div>${t}${s?`<small>${s}</small>`:''}</div><button class="sw ${on(k)?'on':''}" aria-label="${t}"></button></div>`).join('')}
-  <p class="sub" style="margin-top:12px">Turn off both depth layers for plain satellite. Not for navigation.</p>`,'layers');};
-$('#sheetBody').addEventListener('click',e=>{const t=e.target.closest('.tog');if(!t||sheetKind!=='layers')return;const k=t.dataset.k,v=!on(k);setPref(k,v);t.querySelector('.sw').classList.toggle('on',v);applyLayer(k);});
+$('#layersBtn').onclick=()=>{closeCard();openSheet(`<h3>Map layers</h3>${LAYERS.map(([k,t,s])=>`<div class="tog" data-k="${k}"><div>${t}${s?`<small>${s}</small>`:''}</div><button class="sw ${on(k)?'on':''}" role="switch" aria-checked="${on(k)}" aria-label="${t}"></button></div>`).join('')}
+  <p class="sub" style="margin-top:12px">Turn off both depth layers for plain satellite. Not for navigation.</p><p class="sub">Fishing Map ${APP_VERSION}</p>`,'layers');};
+$('#sheetBody').addEventListener('click',e=>{const t=e.target.closest('.tog');if(!t||sheetKind!=='layers')return;const k=t.dataset.k,v=!on(k);setPref(k,v);t.querySelector('.sw').classList.toggle('on',v);t.querySelector('.sw').setAttribute('aria-checked',v);applyLayer(k);});
 function applyLayer(k){
   if(k==='bands'||k==='fallback')applyDepth();
   else if(k==='drops'){on('drops')?dropLayer.addTo(map):map.removeLayer(dropLayer);refreshDrops();}
@@ -688,7 +719,7 @@ function catchForm(at){photoBlob=null;
   $('#fCancel').onclick=()=>closeSheet();
   $('#fSave').onclick=async()=>{const ll=formLoc.ll;const c={id:uid(),ts:Date.now(),lat:+ll.lat.toFixed(6),lng:+ll.lng.toFixed(6),photo:photoBlob};
     for(const k of['species','weight','length','lure','depth','note'])c[k]=$('#c_'+k).value.trim();
-    try{await dbPut('catches',c);}catch(err){toast('Could not save: '+err.message);return;}
+    try{await dbPut('catches',c);}catch(err){toast('Could not save: '+(err&&err.message||'storage error'));return;}
     closeSheet();const m=addCatch(c);toast('Catch saved');clusters.zoomToShowLayer(m,()=>openCatch(c,m));};
 }
 function spotForm({at,spot}){photoBlob=null;const s=spot||{type:'hot',name:'',notes:''};
@@ -704,7 +735,7 @@ function spotForm({at,spot}){photoBlob=null;const s=spot||{type:'hot',name:'',no
   $('#fSave').onclick=async()=>{const name=$('#s_name').value.trim()||TYPES[type][1];
     const o=spot?{...spot}:{id:uid(),ts:Date.now(),lat:+formLoc.ll.lat.toFixed(6),lng:+formLoc.ll.lng.toFixed(6),photo:null};
     o.name=name;o.type=type;o.notes=$('#s_notes').value.trim();if(photoBlob){o.photo=photoBlob;photoURLs.delete('s'+o.id);}delete o.m;
-    try{await dbPut('spots',o);}catch(err){toast('Could not save: '+err.message);return;}
+    try{await dbPut('spots',o);}catch(err){toast('Could not save: '+(err&&err.message||'storage error'));return;}
     if(spot){removePin('spots',spot.m);spots.delete(spot.id);}closeSheet();const m=addSpot(o);toast(spot?'Spot updated':'★ Spot saved');clusters.zoomToShowLayer(m,()=>openSpot(o));};
 }
 
@@ -726,7 +757,7 @@ async function openSpots(){
   render();
   $('#spotRows').onclick=e=>{const r=e.target.closest('.li');if(!r)return;const s=spots.get(r.dataset.id);closeSheet();if(!on('spots')){setPref('spots',true);setGroup('spots',true);}clusters.zoomToShowLayer(s.m,()=>{map.setView([s.lat,s.lng],Math.max(map.getZoom(),16));openSpot(s);});};
 }
-const toDataURL=b=>new Promise(r=>{if(!b)return r(null);const fr=new FileReader();fr.onload=()=>r(fr.result);fr.onerror=()=>r(null);fr.readAsDataURL(b);});
+const toDataURL=b=>new Promise(r=>{if(!b)return r(null);if(typeof b==='string')return r(b);const fr=new FileReader();fr.onload=()=>r(fr.result);fr.onerror=()=>r(null);fr.readAsDataURL(b);});
 async function exportBackup(){
   const feats=[];for(const s of spots.values())feats.push({type:'Feature',geometry:{type:'Point',coordinates:[s.lng,s.lat]},properties:{kind:'spot',id:s.id,ts:s.ts,name:s.name,type:s.type,notes:s.notes,photo:await toDataURL(s.photo)}});
   for(const c of catches.values())feats.push({type:'Feature',geometry:{type:'Point',coordinates:[c.lng,c.lat]},properties:{kind:'catch',id:c.id,ts:c.ts,species:c.species,weight:c.weight,length:c.length,lure:c.lure,depth:c.depth,note:c.note,photo:await toDataURL(c.photo)}});
@@ -738,7 +769,7 @@ $('#importIn').onchange=async e=>{const f=e.target.files[0];e.target.value='';if
       const photo=p.photo&&String(p.photo).startsWith('data:')?await (await fetch(p.photo)).blob():null;
       if(p.kind==='catch'){if(catches.has(p.id))continue;const c={id:p.id||uid(),ts:p.ts||Date.now(),lat,lng,species:p.species||'',weight:p.weight||'',length:p.length||'',lure:p.lure||'',depth:p.depth||'',note:p.note||'',photo};await dbPut('catches',c);addCatch(c);n++;}
       else{const id=p.id||uid();if(spots.has(id))continue;const s={id,ts:p.ts||Date.now(),lat,lng,name:p.name||'Imported spot',type:TYPES[p.type]?p.type:'hot',notes:p.notes||p.description||'',photo};await dbPut('spots',s);addSpot(s);n++;}}
-    toast(`Imported ${n} item${n===1?'':'s'}`);if(sheetKind==='spots')openSpots();}catch(err){toast('Import failed: '+err.message);}};
+    toast(`Imported ${n} item${n===1?'':'s'}`);if(sheetKind==='spots')openSpots();}catch(err){toast('Import failed: '+(err&&err.message||'bad file'));}};
 
 // ---------- drop-off markers ----------
 const DROP_ICON=L.divIcon({className:'',iconSize:[16,16],iconAnchor:[8,8],html:'<div class="drop"><svg width="8" height="8" viewBox="0 0 10 10"><path d="M1 3l4 4 4-4" fill="none" stroke="#9ff3e8" stroke-width="2"/></svg></div>'});
@@ -824,18 +855,20 @@ async function openGems(){
   const vb=map.getBounds();
   if(map.getZoom()<11){$('#gemRows').innerHTML='<p class="sub">Zoom in to a town or lake area (zoom 11 or closer) and tap Gems again.</p>';return;}
   if(!on('bands')){setPref('bands',true);applyDepth();}
-  await Promise.race([loadBands(),new Promise(r=>setTimeout(r,15000))]);
+  const setMsg=m=>{const g=$('#gemRows');if(g&&sheetKind==='gems')g.innerHTML=`<p class="sub">${m}</p>`;};
+  await within(Promise.all([loadBands(),loadWaters(vb).catch(()=>{}),loadCreeks(vb).catch(()=>{})]),12000);
+  if(sheetKind!=='gems')return;setMsg('Analyzing: checking stocking, access and nearby features…');
   const reaches=[...new Set([...bands.values()].filter(v=>v.layer.getBounds().intersects(vb)).map(v=>v.reach))];
   const lakes=reaches.map(analyzeLake).filter(Boolean);
 
   const pad=vb.pad(0.15);
-  await Promise.race([Promise.all([loadWaters(),loadWater(vb),loadCreeks(vb)]),new Promise(r=>setTimeout(r,15000))]);
-  const [,,,,osmRes]=await Promise.all([loadStocking(),loadWdfwLakes(),loadAccess(pad),lakeNames(reaches),Promise.race([loadOSM(pad),new Promise(r=>setTimeout(()=>r(null),15000))])]);
+  const anyWater=lakes.length||[...waters.values()].some(w=>[390,436].includes(w.ftype)&&w.bounds.intersects(vb));
+  const [,,,,osmRes]=await Promise.all([within(loadStocking(),8000),within(loadWdfwLakes(),8000),within(loadAccess(pad),8000),within(lakeNames(reaches),6000),anyWater?within(loadOSM(pad).catch(()=>null),8000):null]);
   const osmOK=Array.isArray(osmRes)&&osmRes.every(Boolean);
   if(sheetKind!=='gems')return;
   const matchW=lk=>[...waters.values()].find(x=>x.reach&&x.reach===lk.reach)||[...waters.values()].find(x=>x.src!=='OSM'&&x.ftype!==460&&x.bounds.contains(lk.center)&&x.rings.some(r=>inRing(lk.center.lng,lk.center.lat,r)));
   const flows=await Promise.all(lakes.map(lk=>{const w=matchW(lk);if(w&&creeks.size){w.flows=flowsFor(w);w.flowsDone=creeks.size;return Promise.resolve(w.flows.map(f=>f.creek.name));}const b=lk.bounds.pad(0.08);
-    return getJSON(`https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6/query?where=${encodeURIComponent('ftype IN (460,336)')}&geometry=${b.getWest()},${b.getSouth()},${b.getEast()},${b.getNorth()}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=gnis_name,ftype&outSR=4326&maxAllowableOffset=0.00003&f=geojson`,{},15000)
+    return getJSON(`https://hydro.nationalmap.gov/arcgis/rest/services/nhd/MapServer/6/query?where=${encodeURIComponent('ftype IN (460,336)')}&geometry=${b.getWest()},${b.getSouth()},${b.getEast()},${b.getNorth()}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=gnis_name,ftype&outSR=4326&maxAllowableOffset=0.00003&f=geojson`,{},8000)
       .then(g=>{const hits=[];for(const f of g.features||[]){const cs=f.geometry.type==='LineString'?f.geometry.coordinates:f.geometry.coordinates.flat();
         if(cs.some((c,i)=>i%2===0&&nearestOnRings(c[1],c[0],lk.edge).d<35))hits.push(f.properties.gnis_name||f.properties.GNIS_NAME||null);}return hits;}).catch(()=>null);}));
   let hidden=0;const rows=[];
@@ -894,22 +927,33 @@ map.createPane('enc').style.zIndex=337;
 map.createPane('contours').style.zIndex=345;
 map.createPane('creeks').style.zIndex=347;
 map.getPane('enc').style.filter='drop-shadow(0 0 2px rgba(159,243,232,.8))';
-const waterRenderer=L.svg({pane:'water',padding:0.5}),encRenderer=L.svg({pane:'enc',padding:0.5}),contRenderer=L.svg({pane:'contours',padding:0.5}),creekRenderer=L.svg({pane:'creeks',padding:0.4});
-// hatch patterns for "no survey" water
-waterRenderer.addTo(map);(()=>{const svg=waterRenderer._container;const ns='http://www.w3.org/2000/svg';const defs=document.createElementNS(ns,'defs');
-  defs.innerHTML='<pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="rgba(170,185,195,.35)"/><line x1="0" y1="0" x2="0" y2="7" stroke="rgba(235,242,246,.75)" stroke-width="1.6"/></pattern><pattern id="hatchM" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)"><rect width="9" height="9" fill="rgba(150,190,150,.18)"/><line x1="0" y1="0" x2="0" y2="9" stroke="rgba(200,235,200,.55)" stroke-width="1.2"/></pattern>';svg.insertBefore(defs,svg.firstChild);})();
+const waterRenderer=L.canvas({pane:'water',padding:0.3,tolerance:2}),encRenderer=L.canvas({pane:'enc',padding:0.3}),contRenderer=L.canvas({pane:'contours',padding:0.3}),creekRenderer=L.svg({pane:'creeks',padding:0.4});
+// hatch patterns for "no survey" water (canvas patterns, drawn at 2x and scaled back for crisp lines)
+function mkHatch(bg,fg,size,lw,dir){const k=2,c=document.createElement('canvas');c.width=c.height=size*k;const x=c.getContext('2d');x.scale(k,k);x.fillStyle=bg;x.fillRect(0,0,size,size);x.strokeStyle=fg;x.lineWidth=lw;x.beginPath();
+  for(const o of[-size,0,size]){if(dir>0){x.moveTo(o,size);x.lineTo(o+size,0);}else{x.moveTo(o,0);x.lineTo(o+size,size);}}x.stroke();
+  const p=x.createPattern(c,'repeat');try{p.setTransform(new DOMMatrix().scale(1/k));}catch(e){}return p;}
+const HATCH=mkHatch('rgba(170,185,195,.35)','rgba(235,242,246,.75)',7,1.6,1),HATCH_M=mkHatch('rgba(150,190,150,.18)','rgba(200,235,200,.55)',9,1.2,-1);
 const waterGroup=L.layerGroup(),encGroup=L.layerGroup(),soundGroup=L.layerGroup(),contGroup=L.layerGroup(),contLabels=L.layerGroup(),creekGroup=L.layerGroup(),creekLabels=L.layerGroup(),flowGroup=L.layerGroup(),featGroup=L.layerGroup();
 const toFt=m=>m*3.28084;
 const WTYPE={390:'Lake/pond',436:'Reservoir',466:'Swamp/marsh',493:'Estuary',460:'River',445:'Sea/ocean',378:'Ice mass',361:'Playa'};
 function zTol(z){return z<=11?0.00025:z<=12?0.00012:z<=13?0.00006:0.00003;}
 const Z_TOL=()=>zTol(map.getZoom());
 
+const cellBB=([w,s,e,n])=>L.latLngBounds([[s,w],[n,e]]);
+function linesBB(ls){let a=[180,90,-180,-90];for(const l of ls){const b=l._bb||bbRing(l)._bb;a=[Math.min(a[0],b[0]),Math.min(a[1],b[1]),Math.max(a[2],b[2]),Math.max(a[3],b[3])];}return L.latLngBounds([[a[1],a[0]],[a[3],a[2]]]);}
+// v5: keep memory flat on long sessions. Far-away features are dropped and their cells reload when you come back.
+const CAP={waters:1500,creeks:1800,enc:1800,cont:1500};
+function evict(){const keep=map.getBounds().pad(1.5);const cellsOut=m=>{for(const[k,pr]of m)if(pr&&pr._bb&&!keep.intersects(pr._bb))m.delete(k);};
+  if(waters.size>CAP.waters){for(const[id,w]of waters)if(!keep.intersects(w.bounds)){waterGroup.removeLayer(w.layer);waters.delete(id);}waterRings.length=0;for(const w of waters.values())waterRings.push(...w.outer);cellsOut(wCells);cellsOut(osmCells);}
+  if(creeks.size>CAP.creeks){for(const[id,c]of creeks)if(!keep.intersects(c.bounds)){creekGroup.removeLayer(c.layer);creekGroup.removeLayer(c.casing);creeks.delete(id);}cellsOut(crCells);for(const w of waters.values())w.flowsDone=-1;}
+  if(encFeats.size>CAP.enc){for(const[id,f]of encFeats)if(!keep.intersects(f.bounds)){encGroup.removeLayer(f.layer);encFeats.delete(id);}cellsOut(encCells);}
+  if(contours.size>CAP.cont){for(const[id,c]of contours)if(!keep.intersects(c.bounds)){contGroup.removeLayer(c.layer);contours.delete(id);}cellsOut(cCells);}}
 // ---- every body of water (NHDPlus HR waterbodies + river areas, OSM water) ----
 const waters=new Map();const wCells=new Map();
 function waterStyle(w){
   if(w.surveyed||w.charted)return{fillOpacity:0,opacity:0,weight:0};
-  if(w.ftype===466)return{fillColor:'url(#hatchM)',fillOpacity:1,color:'rgba(200,235,200,.7)',weight:1,opacity:.8};
-  return{fillColor:'url(#hatch)',fillOpacity:1,color:'rgba(235,242,246,.9)',weight:1.2,opacity:.9,dashArray:w.ftype===460?'':'3 3'};}
+  if(w.ftype===466)return{fillColor:HATCH_M,fillOpacity:1,color:'rgba(200,235,200,.7)',weight:1,opacity:.8};
+  return{fillColor:HATCH,fillOpacity:1,color:'rgba(235,242,246,.9)',weight:1.2,opacity:.9,dashArray:w.ftype===460?'':'3 3'};}
 function addWater(w){if(waters.has(w.id))return;
   // merge duplicates: OSM polygons inside an NHD polygon are skipped
   if(w.src==='OSM'){const c=w.pt;for(const o of waters.values()){if(o.src!=='OSM'&&o.bounds.contains(c)&&o.rings.some(r=>inRing(c[1],c[0],r)))return;}}
@@ -920,23 +964,23 @@ function addWater(w){if(waters.has(w.id))return;
 function interiorPt(rings){const r=rings[0];const b=r._bb;const c=[(b[1]+b[3])/2,(b[0]+b[2])/2];if(inRing(c[1],c[0],r))return c;
   for(let i=0;i<r.length-2;i+=Math.max(1,Math.floor(r.length/40))){const a=r[i],q=r[Math.min(r.length-1,i+Math.floor(r.length/2))];const m=[(a[1]+q[1])/2,(a[0]+q[0])/2];if(inRing(m[1],m[0],r))return m;}return[r[0][1],r[0][0]];}
 function markSurvey(w){const s0=w.surveyed,c0=w.charted;
-  w.surveyed=[...bands.values()].some(v=>(w.reach&&v.reach===w.reach))||(()=>{const p=w.pt;for(const v of bands.values()){if(v.layer.getBounds().contains(p)&&polys(v.f.geometry).some(pp=>inRing(p[1],p[0],pp[0])))return true;}return false;})();
+  w.surveyed=[...bands.values()].some(v=>(w.reach&&v.reach===w.reach))||(()=>{const p=w.pt;for(const v of bands.values()){if((v._bb||(v._bb=v.layer.getBounds())).contains(p)&&polys(v.f.geometry).some(pp=>inRing(p[1],p[0],pp[0])))return true;}return false;})();
   w.charted=!w.surveyed&&[...encFeats.values()].some(f=>f.bounds.contains(w.pt)&&f.rings.some(r=>inRing(w.pt[1],w.pt[0],r)));
   if(w.layer&&(s0!==w.surveyed||c0!==w.charted))w.layer.setStyle(waterStyle(w));}
-function remarkAll(){for(const w of waters.values())markSurvey(w);}
-function loadWaters(){
-  if(!on('water')&&!on('creeks'))return Promise.resolve();
-  if(map.getZoom()<11)return Promise.resolve();
-  const b=map.getBounds(),tol=Z_TOL(),lvl=tol>=0.00012?0:1;
+let rmT;function remarkAll(){clearTimeout(rmT);rmT=setTimeout(()=>{if(typeof map==='undefined')return;const vb=map.getBounds().pad(0.5);for(const w of waters.values())if(w.bounds.intersects(vb))markSurvey(w);},250);}
+function loadWaters(b0){
+  if(!b0&&!on('water')&&!on('creeks'))return Promise.resolve();
+  if(!b0&&map.getZoom()<11)return Promise.resolve();
+  const b=b0||map.getBounds(),tol=b0?zTol(14):Z_TOL(),lvl=tol>=0.00012?0:1;
   return Promise.all(cellsFor(b,lvl?0.05:0.1).map(([x,y,w0,s,e,n])=>{const k=lvl+':'+x+':'+y;if(wCells.has(k))return wCells.get(k);
     const q=(l,where)=>`${HR}/${l}/query?where=${encodeURIComponent(where)}&geometry=${w0},${s},${e},${n}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=permanent_identifier,gnis_name,ftype,fcode,areasqkm,reachcode&outSR=4326&maxAllowableOffset=${tol}&geometryPrecision=6&resultRecordCount=600&f=geojson`;
-    const pr=Promise.all([getJSON(q(9,'ftype IN (390,436,466,493)'),{},30000).catch(()=>null),getJSON(q(8,'ftype IN (460)'),{},30000).catch(()=>null)]).then(([a,c])=>{
+    const bb=[w0,s,e,n];const pr=Promise.all([getJSON(q(9,lvl?'ftype IN (390,436,466,493)':'ftype IN (390,436,466,493) AND areasqkm>0.004'),{bb},30000).catch(()=>null),getJSON(q(8,'ftype IN (460)'),{bb},30000).catch(()=>null)]).then(([a,c])=>{
       if(!a&&!c){wCells.delete(k);return;}
       for(const f of[...(a?.features||[]),...(c?.features||[])]){const p=f.properties;const id='n'+(p.permanent_identifier||f.id);if(waters.has(id))continue;
         const ps=polys(f.geometry);if(!ps.length)continue;ps.forEach(pp=>pp.forEach(bbRing));
         addWater({id,src:'USGS NHD',name:p.gnis_name||null,ftype:+p.ftype,fcode:+p.fcode,areaKm2:+p.areasqkm||null,reach:p.reachcode||null,polys:ps,rings:ps.flat(),outer:ps.map(pp=>pp[0]),pt:interiorPt(ps[0])});}
       refreshFlows();});
-    wCells.set(k,pr);return pr;}));
+    pr._bb=cellBB(bb);wCells.set(k,pr);return pr;}));
 }
 function osmWater(el){const t=el.tags||{};if(!el.geometry||el.geometry.length<4)return;const r=el.geometry.map(g=>[g.lon,g.lat]);if(r[0][0]!==r[r.length-1][0]||r[0][1]!==r[r.length-1][1])return;bbRing(r);
   const P=proj(r[0][1]);const a=ringArea(r,P);if(a<80)return;
@@ -953,23 +997,26 @@ function loadENC(){
   if(!on('enc')||map.getZoom()<10)return Promise.resolve();
   const z=map.getZoom(),b=map.getBounds();const svcs=z>=12?[['enc_coastal/MapServer/166',0.25,0],['enc_harbour/MapServer/227',0.06,2]]:[['enc_coastal/MapServer/166',0.25,0]];
   return Promise.all(svcs.flatMap(([svc,cs,rank])=>cellsFor(b,cs).map(([x,y,w0,s,e,n])=>{const k=svc+':'+x+':'+y;if(encCells.has(k))return encCells.get(k);
-    const pr=getJSON(`${ENC}/${svc}/query?where=1%3D1&geometry=${w0},${s},${e},${n}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=OBJECTID,DRVAL1,DRVAL2,DSNM,SORDAT&outSR=4326&maxAllowableOffset=${rank?0.00004:0.0002}&geometryPrecision=6&f=geojson`,{},40000)
+    const pr=getJSON(`${ENC}/${svc}/query?where=1%3D1&geometry=${w0},${s},${e},${n}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=OBJECTID,DRVAL1,DRVAL2,DSNM,SORDAT&outSR=4326&maxAllowableOffset=${rank?0.00004:0.0002}&geometryPrecision=6&f=geojson`,{bb:[w0,s,e,n]},40000)
       .then(g=>{for(const f of g.features||[]){const p=f.properties;const id=rank+':'+(f.id??p.OBJECTID);if(encFeats.has(id))continue;if(p.DRVAL1==null)continue;
         const ps=polys(f.geometry);ps.forEach(pp=>pp.forEach(bbRing));
         const o={id,rank,d1:+p.DRVAL1,d2:p.DRVAL2==null?null:+p.DRVAL2,chart:p.DSNM,date:p.SORDAT,polys:ps,rings:ps.map(pp=>pp[0]),allRings:ps.flat()};
-        o.layer=L.geoJSON(f,{renderer:encRenderer,pane:'enc',style:{fillColor:encColor(o.d1,o.d2),fillOpacity:o.d1<0?0.35:0.88,color:encColor(o.d1,o.d2),weight:.6,opacity:.9}});
-        o.bounds=o.layer.getBounds();o.layer.on('click',e=>{L.DomEvent.stop(e);tapENC(e.latlng);});encFeats.set(id,o);encGroup.addLayer(o.layer);}
-        [...encFeats.values()].sort((a,b)=>a.rank-b.rank||a.d1-b.d1).forEach(o=>o.layer.bringToFront());remarkAll();})
-      .catch(()=>encCells.delete(k));encCells.set(k,pr);return pr;})));
+        o.layer=L.geoJSON(f,{renderer:encRenderer,pane:'enc',interactive:false,style:{fillColor:encColor(o.d1,o.d2),fillOpacity:o.d1<0?0.35:0.88,color:encColor(o.d1,o.d2),weight:.6,opacity:.9}});
+        o.bounds=o.layer.getBounds();encFeats.set(id,o);encGroup.addLayer(o.layer);}
+        encOrder();remarkAll();})
+      .catch(()=>encCells.delete(k));pr._bb=cellBB([w0,s,e,n]);encCells.set(k,pr);return pr;})));
 }
-const soundings=new Map();let soundKey='';
+let eoT;function encOrder(){clearTimeout(eoT);eoT=setTimeout(()=>[...encFeats.values()].sort((a,b)=>a.rank-b.rank||a.d1-b.d1).forEach(o=>o.layer.bringToFront()),120);}
+function encHit(ll){return[...encFeats.values()].some(f=>f.bounds.contains(ll)&&f.polys.some(pp=>inRing(ll.lng,ll.lat,pp[0])&&!pp.slice(1).some(h=>inRing(ll.lng,ll.lat,h))));}
+const soundings=new Map();let soundKey='',soundCtl=null;
 async function loadSoundings(){
   if(!on('enc')||map.getZoom()<15){soundGroup.clearLayers();soundKey='';return;}
-  const b=map.getBounds();const k=b.toBBoxString();if(k===soundKey)return;soundKey=k;
-  try{const g=await getJSON(`${ENC}/enc_harbour/MapServer/76/query?where=1%3D1&geometry=${b.getWest()},${b.getSouth()},${b.getEast()},${b.getNorth()}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=OBJECTID,Z,SORDAT,DSNM&outSR=4326&resultRecordCount=350&f=geojson`,{},20000);
+  const b=map.getBounds();const k=b.toBBoxString();if(k===soundKey)return;soundKey=k;soundCtl&&soundCtl.abort();const ctl=soundCtl=new AbortController();
+  if(!encHit(b.getCenter())&&![...encFeats.values()].some(f=>f.bounds.intersects(b)))return;
+  try{const g=await getJSON(`${ENC}/enc_harbour/MapServer/76/query?where=1%3D1&geometry=${b.getWest()},${b.getSouth()},${b.getEast()},${b.getNorth()}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=OBJECTID,Z,SORDAT,DSNM&outSR=4326&resultRecordCount=350&f=geojson`,{signal:ctl.signal},20000);
     if(soundKey!==k)return;soundGroup.clearLayers();
     for(const f of g.features||[]){const p=f.properties;const ll=[f.geometry.coordinates[1],f.geometry.coordinates[0]];const s={ll,z:+p.Z,date:p.SORDAT,chart:p.DSNM};soundings.set(p.OBJECTID,s);
-      L.marker(ll,{interactive:false,keyboard:false,icon:L.divIcon({className:'snd',iconSize:[30,14],iconAnchor:[15,7],html:Math.round(toFt(s.z))})}).addTo(soundGroup);}}catch(e){soundKey='';}
+      L.marker(ll,{interactive:false,keyboard:false,icon:L.divIcon({className:'snd',iconSize:[30,14],iconAnchor:[15,7],html:Math.round(toFt(s.z))})}).addTo(soundGroup);}}catch(e){if(soundCtl===ctl)soundKey='';}
 }
 async function nearestSounding(ll){let best=null;for(const s of soundings.values()){const d=hav(s.ll,[ll.lat,ll.lng]);if(!best||d<best.d)best={...s,d};}
   if(best&&best.d<150)return best;
@@ -985,15 +1032,15 @@ const CONT_URLS=[['https://services.arcgis.com/6lCKYNJLvwTXqrmp/arcgis/rest/serv
 function loadContours(){
   if(!on('contours')||map.getZoom()<13||!map.getBounds().intersects(WA))return Promise.resolve();
   return Promise.all(cellsFor(map.getBounds(),0.03).map(([x,y,w0,s,e,n])=>{const k=x+':'+y;if(cCells.has(k))return cCells.get(k);
-    const pr=(async()=>{for(const[u,fl,map1]of CONT_URLS){try{const g=await getJSON(`${u}/query?where=1%3D1&geometry=${w0},${s},${e},${n}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=${fl}&outSR=4326&maxAllowableOffset=0.00002&geometryPrecision=6&f=geojson`,{},30000);
+    const pr=(async()=>{for(const[u,fl,map1]of CONT_URLS){try{const g=await getJSON(`${u}/query?where=1%3D1&geometry=${w0},${s},${e},${n}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=${fl}&outSR=4326&maxAllowableOffset=0.00002&geometryPrecision=6&f=geojson`,{bb:[w0,s,e,n]},30000);
         if(!g.features)continue;
         for(const f of g.features){const id=u.length+':'+(f.id??f.properties.OBJECTID);if(contours.has(id))continue;const a=map1(f.properties);
           const lines=f.geometry.type==='LineString'?[f.geometry.coordinates]:f.geometry.coordinates;lines.forEach(bbRing);
-          const c={id,...a,lines};c.layer=L.polyline(lines.map(l=>l.map(p=>[p[1],p[0]])),{renderer:contRenderer,pane:'contours',color:'#ffffff',weight:c.d%10===0?1.1:0.7,opacity:c.d%10===0?0.75:0.5,interactive:false});
+          const c={id,...a,lines,bounds:linesBB(lines)};c.layer=L.polyline(lines.map(l=>l.map(p=>[p[1],p[0]])),{renderer:contRenderer,pane:'contours',color:'#ffffff',weight:c.d%10===0?1.1:0.7,opacity:c.d%10===0?0.75:0.5,interactive:false});
           contours.set(id,c);contGroup.addLayer(c.layer);}
-        fillFromContours();return;}catch(err){}}
+        fillFromContours();return;}catch(err){if(err.panned)break;}}
       cCells.delete(k);})();
-    cCells.set(k,pr);return pr;}));
+    pr._bb=cellBB([w0,s,e,n]);cCells.set(k,pr);return pr;}));
 }
 // lakes with contour lines but no Ecology bands: fill closed contour rings, deepest on top
 const contFill=L.layerGroup();const filledReach=new Set();
@@ -1059,7 +1106,7 @@ async function tapWater(ll,w){
   if(w.ftype===493||w.ftype===460){if(await tapModel(ll,w))return;}
   openWater(w);}
 map.on('click',async e=>{if(hadUI||map.getZoom()<10)return;
-  const ll=e.latlng;setTimeout(async()=>{await tapModel(ll,null);},0);});
+  const ll=e.latlng;if(on('enc')&&encHit(ll))return tapENC(ll);setTimeout(async()=>{await tapModel(ll,null);},0);});
 
 // ---- creeks (NHDPlus HR flowlines, artificial paths removed) ----
 const creeks=new Map();const crCells=new Map();
@@ -1070,17 +1117,18 @@ function creekStyle(c){const o=c.order||1;
   return{w:o>=5?4:o>=3?2.8:2,dash:null,col:'#38d6ff'};}
 function loadCreeks(b0){
   if(!on('creeks')&&!b0)return Promise.resolve();if(!b0&&map.getZoom()<12)return Promise.resolve();
-  const b=b0||map.getBounds();
-  return Promise.all(cellsFor(b,0.05).map(([x,y,w0,s,e,n])=>{const k=x+':'+y;if(crCells.has(k))return crCells.get(k);
-    const pr=getJSON(`${HR}/3/query?where=${encodeURIComponent('ftype IN (460,336)')}&geometry=${w0},${s},${e},${n}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=nhdplusid,gnis_name,ftype,fcode,streamorde,flowdir&outSR=4326&maxAllowableOffset=0.00004&geometryPrecision=6&resultRecordCount=1500&f=geojson`,{},30000)
+  const b=b0||map.getBounds();const thin=!b0&&map.getZoom()<13;
+  return Promise.all(cellsFor(b,0.05).map(([x,y,w0,s,e,n])=>{const k=(thin?'t':'')+x+':'+y;if(crCells.has(k))return crCells.get(k);if(thin&&crCells.has(x+':'+y))return crCells.get(x+':'+y);
+    const where=thin?'ftype IN (460,336) AND (streamorde>=2 OR gnis_name IS NOT NULL)':'ftype IN (460,336)';
+    const pr=getJSON(`${HR}/3/query?where=${encodeURIComponent(where)}&geometry=${w0},${s},${e},${n}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=nhdplusid,gnis_name,ftype,fcode,streamorde,flowdir&outSR=4326&maxAllowableOffset=${thin?0.0001:0.00004}&geometryPrecision=6&resultRecordCount=1500&f=geojson`,{bb:[w0,s,e,n]},30000)
       .then(g=>{for(const f of g.features||[]){const p=f.properties;if(+p.ftype===558)continue;const id=p.nhdplusid||f.id;if(creeks.has(id))continue;
         const lines=f.geometry.type==='LineString'?[f.geometry.coordinates]:f.geometry.coordinates;lines.forEach(bbRing);
-        const c={id,name:p.gnis_name||null,ftype:+p.ftype,fcode:+p.fcode,order:+p.streamorde||1,flowdir:+p.flowdir,lines};const st=creekStyle(c);const ll=lines.map(l=>l.map(q=>[q[1],q[0]]));
+        const c={id,name:p.gnis_name||null,ftype:+p.ftype,fcode:+p.fcode,order:+p.streamorde||1,flowdir:+p.flowdir,lines,bounds:linesBB(lines)};const st=creekStyle(c);const ll=lines.map(l=>l.map(q=>[q[1],q[0]]));
         c.casing=L.polyline(ll,{renderer:creekRenderer,color:'#fff',weight:st.w+2.4,opacity:.8,dashArray:st.dash,interactive:false});
         c.layer=L.polyline(ll,{renderer:creekRenderer,color:st.col,weight:st.w,opacity:1,dashArray:st.dash});c.layer.on('click',e=>{L.DomEvent.stop(e);openCreek(c,e.latlng);});
         creeks.set(id,c);creekGroup.addLayer(c.casing);creekGroup.addLayer(c.layer);}
         refreshFlows();refreshCreekLabels();})
-      .catch(()=>crCells.delete(k));crCells.set(k,pr);return pr;}));
+      .catch(()=>crCells.delete(k));pr._bb=cellBB([w0,s,e,n]);crCells.set(k,pr);return pr;}));
 }
 let clT;function refreshCreekLabels(){clearTimeout(clT);clT=setTimeout(()=>{creekLabels.clearLayers();if(!on('creeks')||map.getZoom()<13)return;
   const vb=map.getBounds().pad(-0.08);const done=[];let n=0;
@@ -1133,8 +1181,12 @@ function openFeat(f){const notes={spring:'Springs bring cold, steady water; trou
 function waterAccess(w){const near=(lat,lng,m)=>w.bounds.pad(0.5).contains([lat,lng])&&nearestOnRings(lat,lng,w.outer).d<m;
   return{acc:[...access.values()].filter(a=>near(a.lat,a.lng,300)),park:[...parking.values()].filter(p=>near(p.lat,p.lng,400)),osmPub:[...osm.values()].filter(o=>['park','fishing','pier','slipway'].includes(o.kind)&&!['private','no','customers'].includes(o.t.access)&&near(o.lat,o.lng,250))};}
 async function openWater(w){
-  if(WA.contains(w.pt))await Promise.race([loadAccess(w.bounds.pad(0.3)),new Promise(r=>setTimeout(r,4000))]);
-  if(!w.flows||w.flowsDone!==creeks.size){await Promise.race([loadCreeks(w.bounds.pad(0.1)),new Promise(r=>setTimeout(r,6000))]);w.flowsDone=creeks.size;w.flows=flowsFor(w);}
+  if(!w.flows||w.flowsDone!==creeks.size){w.flowsDone=creeks.size;w.flows=flowsFor(w);}
+  renderWater(w,true);
+  await within(Promise.all([WA.contains(w.pt)?loadAccess(w.bounds.pad(0.3)).catch(()=>{}):null,loadCreeks(w.bounds.pad(0.1)).catch(()=>{})]),6000);
+  w.flowsDone=creeks.size;w.flows=flowsFor(w);
+  if($('#card').dataset.w===w.id&&document.body.classList.contains('card-open'))renderWater(w,false);}
+function renderWater(w,pending){
   const a=waterAccess(w);const acres=w.areaKm2!=null?w.areaKm2*247.105:null;
   const lake=w.surveyed?[...bands.values()].find(v=>v.reach===w.reach||v.layer.getBounds().contains(w.pt)):null;
   const status=w.surveyed?'<b style="color:#1b8f5a">Depth surveyed</b> (WA Ecology/USGS)':w.charted?'<b style="color:#1b8f5a">Charted</b> (NOAA ENC soundings)':'<b>No depth survey available for this '+esc(wKind(w))+'</b>';
@@ -1143,8 +1195,8 @@ async function openWater(w){
   const accTxt=a.acc.length?`WDFW access: ${esc(a.acc[0].name)}`:a.osmPub.length?'Public park/fishing access nearby (OSM)':'No public access found. It may be private';
   showCard(o,`<div class="ph" style="background-image:${w.surveyed||w.charted?GRAD:'repeating-linear-gradient(45deg,#9fb0ba 0 6px,#c9d4da 6px 12px)'};font-size:44px">${w.ftype===466?'🌾':'💧'}</div><div class="body">${head('≈','background:#2a8fb5',wName(w),`${esc(w.src)} • ${esc(wKind(w))}${acres?` • ${acres<10?acres.toFixed(1):Math.round(acres)} acres`:''}`)}
     <div class="note" style="-webkit-line-clamp:4">${status}. ${accTxt}${a.park.length?` · ${a.park.length} parking`:''}. ${ins.length||outs.length?`Creeks: ${ins.length} in, ${outs.length} out${[...ins,...outs].find(f=>f.creek.name)?` (${esc([...new Set([...ins,...outs].map(f=>f.creek.name).filter(Boolean))].slice(0,2).join(', '))})`:''}.`:'No mapped creeks touching it.'}</div>
-    <div class="sub" style="font-size:10.5px">${BADGE_NOTE}</div></div>`,stdActs(o,lake?act('lake',I.info,'Lake info'):''),null);
-  if(lake)ctx.lake=analyzeLake(lake.reach);}
+    <div class="sub" style="font-size:10.5px">${pending?'Checking access and creeks… · ':''}${BADGE_NOTE}</div></div>`,stdActs(o,lake?act('lake',I.info,'Lake info'):''),null);
+  $('#card').dataset.w=w.id;if(lake)ctx.lake=analyzeLake(lake.reach);}
 
 // ---- water near me ----
 async function waterNearMe(){const rows=$('#spotRows');if(!rows)return;rows.innerHTML='<p class="sub">Finding water near you…</p>';
@@ -1169,7 +1221,7 @@ function v4Move(){const z=map.getZoom();
   if(on('creeks')&&z<12)map.removeLayer(creekGroup);else if(on('creeks'))creekGroup.addTo(map);
   if(on('water')&&z<11)map.removeLayer(waterGroup);else if(on('water'))waterGroup.addTo(map);
   if(on('contours')&&z<13)map.removeLayer(contGroup);else if(on('contours'))contGroup.addTo(map);
-  loadWaters();loadENC();loadSoundings();loadContours().then(refreshContourLabels);loadCreeks();loadFeats();refreshFlows();refreshCreekLabels();refreshContourLabels();}
+  evict();loadWaters();loadENC();loadSoundings();loadContours().then(refreshContourLabels);loadCreeks();loadFeats();refreshFlows();refreshCreekLabels();refreshContourLabels();remarkAll();}
 
 // ---------- search ----------
 async function geocode(q){
@@ -1184,7 +1236,7 @@ $('#search').addEventListener('keydown',async e=>{if(e.key!=='Enter')return;e.pr
   const ll=q.match(/^\s*(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)\s*$/);if(ll)return go({lat:+ll[1],lng:+ll[2]});
   const box=$('#results');box.style.display='block';box.innerHTML='<div style="color:#6b7785">Searching…</div>';
   try{res=await geocode(q);if(!res.length){box.innerHTML='<div style="color:#6b7785">No results</div>';return;}if(res.length===1)return go(res[0]);
-    box.innerHTML=res.map((r,i)=>`<div data-i="${i}">${esc(r.name)}</div>`).join('');}catch(err){box.innerHTML='<div style="color:#6b7785">Search failed</div>';}});
+    box.innerHTML=res.map((r,i)=>`<div data-i="${i}" role="button" tabindex="0">${esc(r.name)}</div>`).join('');}catch(err){box.innerHTML='<div style="color:#6b7785">Search failed</div>';}});
 $('#results').onclick=e=>{const d=e.target.closest('[data-i]');if(d)go(res[+d.dataset.i]);};
 
 // ---------- go ----------
@@ -1194,8 +1246,15 @@ map.on('zoomend',updLegend);
 applyDepth();['water','enc','contours','creeks','features'].forEach(k=>on(k)&&applyV4(k));if(on('drops'))dropLayer.addTo(map);if(on('parking'))parkLayer.addTo(map);
 loadMine();loadLaunches();loadStocking();loadParking();loadBands().then(refreshDrops);
 if(shared)setTimeout(openShared,600);
-if('serviceWorker' in navigator&&location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(e=>console.warn('SW',e.message)));
-window.fishmap={waters,creeks,contours,encFeats,flowMarks,feats,tapLake,tapENC,tapWater,openWater,openCreek,openFlow,readLakeDepth,map,bands,spots,catches,parking,access,osm,dbPut,dbDel,addSpot,addCatch,openSpot,openCatch,openParking,openDirections,openGems,openSpots,openLake,findParking,analyzeLake,clusters};
+if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
+  // A new worker activates at once (skipWaiting + clients.claim). If it carries a newer app version than this page, offer a reload. Pages from v4 or older are reloaded by the worker itself.
+  let upShown=false;
+  const showUpd=()=>{if(upShown)return;upShown=true;const b=$('#upd');b.style.display='flex';b.onclick=()=>location.reload();};
+    navigator.serviceWorker.addEventListener('message',e=>{if(e.data&&e.data.type==='version'&&e.data.ver&&e.data.app&&e.data.app!==APP_VERSION)showUpd();});
+  window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).then(reg=>{
+    const chk=()=>reg.update().catch(()=>{});setInterval(chk,30*60000);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')chk();});
+  }).catch(e=>console.warn('SW',e.message)));}
+window.fishmap={get stockGroups(){return stockGroups;},APP_VERSION,inflight,evict,status,waters,creeks,contours,encFeats,flowMarks,feats,tapLake,tapENC,tapWater,openWater,openCreek,openFlow,readLakeDepth,map,bands,spots,catches,parking,access,osm,dbPut,dbDel,addSpot,addCatch,openSpot,openCatch,openParking,openDirections,openGems,openSpots,openLake,findParking,analyzeLake,clusters};
 })();
 </script>
 </body>

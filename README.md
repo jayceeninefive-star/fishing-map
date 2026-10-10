@@ -20,6 +20,16 @@ Install it: open it in Chrome (Android) and choose **Add to Home Screen** / **In
 - Springs, waterfalls, dams and weirs (NHD points + OSM) appear at zoom 14+.
 - **Water near me** (in the Spots tab) lists every mapped water body around you, nearest first.
 
+## Updates and reliability (v5)
+- **Updates:** the service worker cache is versioned (`fm-v5.0`). Older installs (v2-v4) are swapped out and reloaded once automatically. After that, when a new version is published you get an orange "Update available, tap to reload" button. When you're online the page always loads fresh HTML.
+- **Smoother on phones:** big background layers (all water, NOAA chart areas, contour lines) are drawn on canvas instead of thousands of SVG shapes. The glow effect is paused while you pan or zoom. Requests for areas you've panned away from are cancelled. Far-away features are dropped after long sessions so memory stays flat.
+- **Fewer tiny features zoomed out:** at zoom 11-12 you see waters over about 1 acre and creeks of stream order 2 or more (or named ones). Everything shows from zoom 13.
+- **When a data source is down:** a small note says which source isn't responding ("Not responding right now: NOAA chart depths…") and the map keeps whatever did load. When you're offline you get an "Offline" note and the cached app.
+- Gems and Find parking give up waiting after about 20 s and 9 s and show what they have. Water cards open right away and fill in creeks and access as they load.
+- Location blocked: a clear message telling you to allow location for the site.
+- Safari private mode: photos are stored as data URLs when IndexedDB can't store images.
+- Tap targets are at least 44 px, switches are announced as switches, and there's a search label.
+
 ## Tabs
 - **Map:** the map itself. Tap a lake's depth bands for the **lake info sheet**, which has area, max depth, depth bands, recent WDFW stocking, launches and parking, current conditions (Open-Meteo: temperature, wind, pressure trend, sunrise and sunset), an approximate solunar bite window, drop-offs, and WDFW links.
 - **Spots:** your saved spots, sorted by distance from you, with search, plus **Export backup / Import**. The backup is a GeoJSON file of spots and catches, with photos included as data URLs.
