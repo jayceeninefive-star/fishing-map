@@ -1,6 +1,6 @@
 // Fishing Map service worker: app shell offline, map tiles only when already cached.
 // v5: version bump wipes older (v2-v4) shells; pages always fetch fresh HTML when online (bypassing the HTTP cache).
-const VER = 'fm-v5.0', APP = 'v5.0';
+const VER = 'fm-v6.0', APP = 'v6.0';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js',
   'https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js', 'https://unpkg.com/suncalc@1.9.0/suncalc.js'];
@@ -26,7 +26,7 @@ function keep(name, max, req, res) {
 }
 async function trim(name, max) { const c = await caches.open(name); const ks = await c.keys(); for (let i = 0; i < ks.length - max; i++) await c.delete(ks[i]); }
 const isTile = u => /World_Imagery\/MapServer\/tile|DEM_global_mosaic\/ImageServer\/exportImage/.test(u);
-const isData = u => /encdirect.noaa.gov|services\.arcgis\.com\/6lCKYNJLvwTXqrmp|gis\.ecology\.wa\.gov|geodataservices\.wdfw\.wa\.gov|data\.wa\.gov\/resource|hydro\.nationalmap\.gov|api\.open-meteo\.com/.test(u);
+const isData = u => /encdirect.noaa.gov|services\.arcgis\.com\/6lCKYNJLvwTXqrmp|gis\.ecology\.wa\.gov|geodataservices\.wdfw\.wa\.gov|data\.wa\.gov\/resource|hydro\.nationalmap\.gov|api\.open-meteo\.com|tigerweb\.geo\.census\.gov|services1\.arcgis\.com\/fBc8EJBxQRMcHlei|services\.arcgis\.com\/QVENGdaPbd4LUkLV|services2\.arcgis\.com\/FiaPA4ga0iQKduv3|\/data\/emergency-rules\.json/.test(u);
 self.addEventListener('fetch', e => {
   const r = e.request; if (r.method !== 'GET') return;
   const u = r.url;

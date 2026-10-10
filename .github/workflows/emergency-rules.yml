@@ -1,0 +1,25 @@
+name: Refresh WDFW emergency rules
+on:
+  schedule:
+    - cron: '17 */3 * * *'   # every 3 hours
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch WDFW emergency rules RSS -> data/emergency-rules.json
+        run: python3 tools/fetch_rules.py
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- data/emergency-rules.json; then echo "no change"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add data/emergency-rules.json
+          git commit -m "Refresh WDFW emergency rules"
+          git push

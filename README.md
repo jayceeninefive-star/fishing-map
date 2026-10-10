@@ -30,6 +30,23 @@ Install it: open it in Chrome (Android) and choose **Add to Home Screen** / **In
 - Safari private mode: photos are stored as data URLs when IndexedDB can't store images.
 - Tap targets are at least 44 px, switches are announced as switches, and there's a search label.
 
+## Rules & closures (v6)
+
+**Regulations change often. This map is a helper, not legal advice; always check current WDFW rules and emergency changes before fishing.**
+
+A "Rules & closures" strip sits on every card, a full Rules sheet opens from it, and the lake sheet has its own section. The "Rules & closures" layer is on by default. The map legend uses red for closed or no fishing, orange for special or emergency rules, and amber for land status (check the rules).
+
+| What | Official source | Notes |
+|---|---|---|
+| Emergency rules | WDFW RSS `https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss` | The feed has no CORS, so `.github/workflows/emergency-rules.yml` runs `tools/fetch_rules.py` every 3 h and saves `data/emergency-rules.json`. Titles, dates and locations are copied word for word, and every notice links to its WDFW page. The feed only holds the newest ~30 notices. |
+| Marine areas 1-13 | WDFW `ApplicationServices/Marine_Areas/MapServer/3` | Tapping salt water shows the area number and name, with links to the pamphlet page and the WDFW area page. |
+| MPAs | WDFW `FP_FishMaps/MarineProtectedAreas` (layer 3 polygons + layer 0 allowed-use table) | Red hatch: every recreational category is Closed (no-take). Orange: some categories are Closed or Limited. Each MPA links to its WDFW page and WAC. |
+| Freshwater | No WDFW regulations GIS layer exists (only marine and commercial WAC layers) | Shows the statewide rules quoted from the 2026-27 pamphlet, with links to the right Special Rules page. |
+| Dams | Pamphlet statewide general rules + WAC 220-310-030(1); dam points from USACE NID (on-stream only), USGS NHD and OSM | 400 ft zone drawn downstream along the NHD flowline. If the flow direction is unknown, a 400 ft circle is drawn instead. |
+| Land status | Census TIGERweb (reservations, military), NPS LRD boundaries, USFWS refuge boundaries | Amber with explanatory text. These are not bans. |
+
+Matching: a notice "matches" a water when the name is the same and the county matches (from Census TIGERweb). When the name matches but the notice gives no county, the card says "possible match, check the rule". Many notices cover only part of a river. Gems skips waters with an active closure that matches by name and county, and flags possible matches. Property lines aren't mapped.
+
 ## Tabs
 - **Map:** the map itself. Tap a lake's depth bands for the **lake info sheet**, which has area, max depth, depth bands, recent WDFW stocking, launches and parking, current conditions (Open-Meteo: temperature, wind, pressure trend, sunrise and sunset), an approximate solunar bite window, drop-offs, and WDFW links.
 - **Spots:** your saved spots, sorted by distance from you, with search, plus **Export backup / Import**. The backup is a GeoJSON file of spots and catches, with photos included as data URLs.
