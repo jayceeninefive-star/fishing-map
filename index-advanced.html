@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>Fishing Depth Map</title>
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+:root{--bg:#0b1620;--panel:#111f2b;--panel2:#172a39;--line:#24384a;--text:#e3edf5;--muted:#8fa6b8;--accent:#2fb3ff;--accent2:#35d39a;--warn:#ffb547;--danger:#ff6b6b}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:14px/1.4 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+#map{position:absolute;inset:0;background:#0d1b26}
+button,input,select,textarea{font:inherit;color:inherit}
+.btn{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--accent)}
+.btn.on{background:var(--accent);color:#04121d;border-color:var(--accent);font-weight:600}
+.btn.sm{padding:4px 8px;font-size:12px}
+.btn.danger{border-color:#5a2a2a;color:#ffb3b3}
+/* top bar */
+#top{position:absolute;top:0;left:0;right:0;z-index:1000;display:flex;gap:8px;align-items:center;padding:8px;padding-top:max(8px,env(safe-area-inset-top));pointer-events:none}
+#top>*{pointer-events:auto}
+#menuBtn{width:42px;height:42px;font-size:20px;padding:0}
+#searchWrap{flex:1;max-width:520px;position:relative}
+#search{width:100%;height:42px;border-radius:10px;border:1px solid var(--line);background:rgba(17,31,43,.95);padding:0 12px;outline:none}
+#search:focus{border-color:var(--accent)}
+#results{position:absolute;top:46px;left:0;right:0;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:none;max-height:50vh;overflow-y:auto}
+#results div{padding:9px 12px;border-bottom:1px solid var(--line);cursor:pointer}
+#results div:hover{background:var(--panel2)}
+#brand{font-weight:700;background:rgba(17,31,43,.95);border:1px solid var(--line);border-radius:10px;padding:0 12px;height:42px;display:flex;align-items:center;gap:6px;white-space:nowrap}
+@media(max-width:640px){#brand{display:none}}
+/* side panel */
+#panel{position:absolute;z-index:1001;top:0;left:0;bottom:0;width:360px;max-width:92vw;background:var(--panel);border-right:1px solid var(--line);transform:translateX(-100%);transition:transform .25s;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top)}
+#panel.open{transform:none}
+#panelHead{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid var(--line)}
+#panelHead b{font-size:16px}
+#tabs{display:flex;border-bottom:1px solid var(--line)}
+#tabs button{flex:1;background:none;border:0;padding:10px 4px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;font-size:13px}
+#tabs button.on{color:var(--text);border-bottom-color:var(--accent)}
+.tab{display:none;overflow-y:auto;padding:12px;flex:1}
+.tab.on{display:block}
+h4{margin:14px 0 6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+h4:first-child{margin-top:0}
+.row{display:flex;align-items:flex-start;gap:8px;padding:6px 0}
+.row label{flex:1;cursor:pointer}
+.row small,.muted{color:var(--muted);font-size:12px;display:block}
+.row input[type=checkbox],.row input[type=radio]{margin-top:3px;accent-color:var(--accent)}
+.status{font-size:11px;color:var(--muted);margin-left:4px}
+.status.ok{color:var(--accent2)} .status.err{color:var(--danger)} .status.load{color:var(--warn)}
+input[type=range]{width:100%;accent-color:var(--accent)}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px;margin:8px 0}
+.card .t{font-weight:600}
+.notice{background:#2a1f0c;border:1px solid #5c4314;color:#ffd79a;border-radius:10px;padding:8px 10px;font-size:12px;margin:8px 0}
+.tips p{margin:6px 0}
+.tips b{color:#bfe6ff}
+.flex{display:flex;gap:6px;flex-wrap:wrap}
+.legend{display:flex;height:10px;border-radius:5px;overflow:hidden;margin:4px 0}
+.legend span{flex:1}
+/* right buttons */
+#fab{position:absolute;right:10px;bottom:calc(120px + env(safe-area-inset-bottom));z-index:1000;display:flex;flex-direction:column;gap:8px}
+#fab .btn{width:46px;height:46px;border-radius:12px;font-size:19px;padding:0;background:rgba(17,31,43,.95)}
+#fab .btn.on{background:var(--accent)}
+#modeBar{position:absolute;left:50%;transform:translateX(-50%);top:calc(62px + env(safe-area-inset-top));z-index:1000;background:rgba(17,31,43,.96);border:1px solid var(--accent);border-radius:10px;padding:8px 12px;display:none;gap:8px;align-items:center;max-width:94vw}
+#modeBar.show{display:flex}
+#toast{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:1200;background:#071019;border:1px solid var(--line);padding:8px 14px;border-radius:10px;display:none;max-width:90vw}
+#nav{position:absolute;left:8px;bottom:calc(48px + env(safe-area-inset-bottom));z-index:999;background:rgba(43,18,10,.9);color:#ffcfa6;border:1px solid #6b3a1f;border-radius:8px;padding:3px 8px;font-size:11px}
+/* leaflet dark */
+.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:var(--panel);color:var(--text);border:1px solid var(--line)}
+.leaflet-popup-content{margin:10px 12px;min-width:200px}
+.leaflet-popup-content a{color:var(--accent)}
+.leaflet-container a.leaflet-popup-close-button{color:var(--muted)}
+.leaflet-control-attribution{background:rgba(11,22,32,.85)!important;color:var(--muted);max-width:70vw;font-size:10px}
+.leaflet-control-attribution a{color:#9fd3ff}
+.leaflet-bar a{background:var(--panel);color:var(--text);border-bottom-color:var(--line)}
+.leaflet-bar a:hover{background:var(--panel2)}
+.leaflet-control-scale-line{background:rgba(11,22,32,.8);color:var(--text);border-color:var(--muted)}
+.leaflet-tooltip{background:var(--panel);color:var(--text);border:1px solid var(--line)}
+.pin{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;color:#fff;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.6)}
+.dlabel{color:#fff;font-size:11px;font-weight:700;text-shadow:0 0 3px #000,0 0 3px #000;white-space:nowrap}
+.pp table{border-collapse:collapse;width:100%;font-size:12px}
+.pp td{padding:2px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+.pp td:first-child{color:var(--muted);white-space:nowrap}
+.form label{display:block;font-size:12px;color:var(--muted);margin-top:6px}
+.form input,.form textarea,.form select{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:6px}
+.spotItem{display:flex;justify-content:space-between;gap:6px;align-items:center}
+.stockItem{cursor:pointer}
+.stockItem:hover{border-color:var(--accent)}
+@media(max-width:640px){.leaflet-control-attribution{max-height:16px;overflow:hidden;cursor:pointer}.leaflet-control-attribution.full{max-height:none}}
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<div id="top">
+  <button class="btn" id="menuBtn" title="Layers, tools & tips">☰</button>
+  <div id="brand">🎣 Fishing Depth Map</div>
+  <div id="searchWrap">
+    <input id="search" type="search" placeholder="Search a lake, river, bay, town…" autocomplete="off">
+    <div id="results"></div>
+  </div>
+</div>
+
+<div id="panel">
+  <div id="panelHead"><b>🎣 Fishing Depth Map</b><button class="btn sm" id="closePanel">✕</button></div>
+  <div id="tabs">
+    <button data-tab="layers" class="on">Layers</button>
+    <button data-tab="spots">My Spots</button>
+    <button data-tab="stocked">Stocked</button>
+    <button data-tab="tips">Tips</button>
+    <button data-tab="about">About</button>
+  </div>
+
+  <div class="tab on" id="tab-layers">
+    <h4>Base map</h4>
+    <div id="baseList"></div>
+    <h4>Depth</h4>
+    <div id="depthList"></div>
+    <div class="row" style="display:block">
+      <span class="muted">Depth layer opacity: <b id="opVal">85%</b></span>
+      <input type="range" id="opacity" min="10" max="100" value="85">
+    </div>
+    <div class="muted">WA lake contours (ft):</div>
+    <div class="legend" id="depthLegend"></div>
+    <div class="muted" style="display:flex;justify-content:space-between"><span>0</span><span>20</span><span>40</span><span>60</span><span>100+</span></div>
+    <h4>Water</h4>
+    <div id="waterList"></div>
+    <h4>Fishing places</h4>
+    <div id="poiList"></div>
+    <div class="muted" id="poiNote">OSM places and WA access sites load for the current view when zoomed in (zoom 11+).</div>
+  </div>
+
+  <div class="tab" id="tab-spots">
+    <div class="flex">
+      <button class="btn on" id="addSpotBtn2">📍 Drop a pin</button>
+      <button class="btn" id="exportBtn">⬇ Export GeoJSON</button>
+      <label class="btn" style="display:inline-block">⬆ Import<input type="file" id="importFile" accept=".geojson,.json,application/geo+json,application/json" hidden></label>
+    </div>
+    <p class="muted">Saved only in this browser (localStorage). Export a backup now and then, and import it on another device.</p>
+    <div id="spotList"></div>
+  </div>
+
+  <div class="tab" id="tab-stocked">
+    <p class="muted">Washington WDFW fish plants (stocking), live from data.wa.gov. Lakes are matched to WDFW lake locations; river and unmatched releases show a 🔍 find button.</p>
+    <div class="flex" style="align-items:center">
+      <select id="stockDays" class="btn sm"><option value="14">Last 14 days</option><option value="30" selected>Last 30 days</option><option value="60">Last 60 days</option><option value="120">Last 120 days</option></select>
+      <input id="stockFilter" class="btn sm" placeholder="Filter species/lake" style="flex:1;min-width:120px">
+    </div>
+    <div id="stockStatus" class="muted" style="margin-top:6px"></div>
+    <div id="stockList"></div>
+  </div>
+
+  <div class="tab tips" id="tab-tips">
+    <h4>Reading contours for fish</h4>
+    <p><b>Tight lines = drop-offs and ledges.</b> Where contour lines bunch together the bottom falls off fast. Fish hold on the edge, moving shallow to feed and dropping deep to rest. Work the top and the base of the break.</p>
+    <p><b>Points.</b> Contours that bulge out from shore in a "V" or "U" mark an underwater point. Points funnel baitfish and catch current and wind. Fish the tip and the sides where it drops into deep water.</p>
+    <p><b>Humps and saddles.</b> Small closed rings out in open water are humps or underwater islands, top fish magnets. A low "saddle" between two humps or between a hump and shore is a travel route.</p>
+    <p><b>Channel edges.</b> On rivers, reservoirs and bays, the old river channel shows as a deeper winding trough. Fish stack along the channel edge, especially at outside bends and where the channel swings close to a point or flat.</p>
+    <p><b>Inflows and outflows.</b> Where a creek or river enters (blue NHD lines), it brings food, oxygen and cooler (or warmer) water. Outflows and dams concentrate current. Look for where the inflow's channel cuts across a flat.</p>
+    <p><b>Weed lines.</b> Weeds usually stop at a set depth (often 8 to 15 ft, depending on water clarity). The contour at that depth is the weed edge. Pike, bass and perch patrol it. Satellite view can show the dark weed beds in clear water.</p>
+    <p><b>Flats next to deep water.</b> A shallow flat that sits right beside a drop is a feeding table, best at dawn, dusk and on overcast days.</p>
+    <p><b>Near launches.</b> Structure near ramps (🟢) and piers gets heavy pressure, but piers and docks also give shade and cover. Fishing piers (🟠/🟤) are good spots for shore anglers.</p>
+    <p><b>Season.</b> Spring: shallow, warming flats and north-shore bays. Summer: deeper breaks, humps, the thermocline and shade. Fall: fish follow bait back up onto points and flats. Winter: the deepest steep breaks, slow presentations.</p>
+    <p><b>Salt water (Puget Sound).</b> On NOAA charts, look for tide rips off points, ledges where soundings jump, kelp lines and the edges of channels. Fish the tide change.</p>
+    <p class="muted">Tap anywhere on the map for lat/long plus an approximate bottom elevation from the NOAA NCEI elevation model.</p>
+  </div>
+
+  <div class="tab" id="tab-about">
+    <div class="notice">⚠ <b>Not for navigation.</b> This is a fishing-planning aid. Depths are approximate and may be outdated. Use official NOAA charts and real navigation equipment on the water. Check WDFW / state regulations before fishing.</div>
+    <h4>Data sources</h4>
+    <div id="sources" class="muted" style="font-size:12px"></div>
+    <h4>Coverage</h4>
+    <p class="muted" style="font-size:12px">• <b>NOAA charts</b>: US coastal waters, Puget Sound, Great Lakes, major rivers and navigable inland waters (for example, Lake Washington and the Columbia).<br>• <b>WDFW lake contours</b>: about 2,970 contour lines for selected Washington lowland lakes (zoom 12+).<br>• <b>NCEI / GEBCO</b>: worldwide coarse bathymetry. NCEI is detailed along US coasts and in some big lakes.<br>• Most small inland lakes outside WA have no free contour data. Paid apps such as Navionics or C-MAP are the usual source there.</p>
+  </div>
+</div>
+
+<div id="fab">
+  <button class="btn" id="locateBtn" title="Locate me">◎</button>
+  <button class="btn" id="addSpotBtn" title="Drop a spot pin">📍</button>
+  <button class="btn" id="measureBtn" title="Measure distance">📏</button>
+</div>
+<div id="modeBar"><span id="modeText"></span><button class="btn sm" id="modeDone">Done</button></div>
+<div id="nav">⚠ Not for navigation</div>
+<div id="toast"></div>
+
+<script>
+(function(){
+'use strict';
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(msg, ms=2600){ const t=$('#toast'); t.textContent=msg; t.style.display='block'; clearTimeout(t._h); t._h=setTimeout(()=>t.style.display='none', ms); }
+async function fetchJSON(url, opts={}, timeout=25000){
+  const ctl = new AbortController(); const h = setTimeout(()=>ctl.abort(), timeout);
+  try { const r = await fetch(url, {...opts, signal: ctl.signal}); if(!r.ok) throw new Error('HTTP '+r.status); return await r.json(); }
+  finally { clearTimeout(h); }
+}
+
+// ---------- Map ----------
+const saved = JSON.parse(localStorage.getItem('fishmap.view') || 'null');
+const map = L.map('map', {zoomControl:false, worldCopyJump:true, preferCanvas:false})
+  .setView(saved ? [saved.lat, saved.lng] : [47.60, -122.33], saved ? saved.z : 10);
+L.control.zoom({position:'bottomright'}).addTo(map);
+L.control.scale({imperial:true, metric:true, position:'bottomleft'}).addTo(map);
+map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+map.on('moveend', ()=>{ const c=map.getCenter(); localStorage.setItem('fishmap.view', JSON.stringify({lat:c.lat,lng:c.lng,z:map.getZoom()})); });
+
+// Panes so depth draws above base but below POIs
+map.createPane('depth').style.zIndex = 350;
+map.createPane('contours').style.zIndex = 400;
+map.createPane('water').style.zIndex = 390;
+map.createPane('seamarks').style.zIndex = 395;
+
+// ArcGIS export (MapServer/ImageServer) as 256px tiles
+const ArcExport = L.TileLayer.extend({
+  initialize(url, opts){ this._base = url; L.TileLayer.prototype.initialize.call(this, url, opts); },
+  getTileUrl(c){
+    const ts = this.getTileSize();
+    const nw = L.CRS.EPSG3857.project(this._map.unproject([c.x*ts.x, c.y*ts.y], c.z));
+    const se = L.CRS.EPSG3857.project(this._map.unproject([(c.x+1)*ts.x, (c.y+1)*ts.y], c.z));
+    const bbox = [nw.x, se.y, se.x, nw.y].join(',');
+    const op = this.options.image ? 'exportImage' : 'export';
+    return `${this._base}/${op}?bbox=${bbox}&bboxSR=3857&imageSR=3857&size=${ts.x},${ts.y}&format=png32&transparent=true&f=image${this.options.extra||''}`;
+  }
+});
+
+const ESRI = 'https://server.arcgisonline.com/ArcGIS/rest/services/';
+const esriAttr = 'Tiles &copy; <a href="https://www.esri.com">Esri</a> and its data providers';
+const bases = {
+  sat: {name:'Satellite (Esri World Imagery)', layer: L.layerGroup([
+      L.tileLayer(ESRI+'World_Imagery/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, maxNativeZoom:19, attribution: esriAttr+', Maxar, Earthstar Geographics'}),
+      L.tileLayer(ESRI+'Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, opacity:.9})])},
+  street: {name:'Streets (Esri)', layer: L.tileLayer(ESRI+'World_Street_Map/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, attribution: esriAttr})},
+  ocean: {name:'Ocean (Esri, with bathymetry)', layer: L.layerGroup([
+      L.tileLayer(ESRI+'Ocean/World_Ocean_Base/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, maxNativeZoom:13, attribution: esriAttr+', GEBCO, NOAA, Garmin'}),
+      L.tileLayer(ESRI+'Ocean/World_Ocean_Reference/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, maxNativeZoom:13})])},
+  topo: {name:'Topographic (Esri)', layer: L.tileLayer(ESRI+'World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {maxZoom:19, attribution: esriAttr})},
+  osm: {name:'OpenStreetMap', layer: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'})}
+};
+
+// Depth layers
+const NOAA_WMS = 'https://gis.charttools.noaa.gov/arcgis/rest/services/MCS/NOAAChartDisplay/MapServer/exts/MaritimeChartService/WMSServer';
+const depth = {
+  noaa: {name:'NOAA nautical charts (ENC)', desc:'Soundings (ft) and depth contours for the US coast, Puget Sound and big inland waters. Zoom in for detail. Land is drawn in tan, so lower the opacity to see the satellite.', on:true,
+    layer: L.tileLayer.wms(NOAA_WMS, {layers:'0,1,2,3,4,5,6,7,8,9,10,11,12', format:'image/png', transparent:true, version:'1.3.0', pane:'depth', maxZoom:19, tileSize:512, zoomOffset:-1, minZoom:3,
+      attribution:'Charts: <a href="https://nauticalcharts.noaa.gov">NOAA Office of Coast Survey</a> (ENC)'})},
+  wdfw: {name:'WA lake depth contours (WDFW)', desc:'Contour lines (ft) for about 300+ Washington lowland lakes. Zoom 12+. Tap a line for its depth.', on:true, vector:true},
+  ncei: {name:'NOAA NCEI bathymetry (shaded)', desc:'Shaded-relief elevation model of the sea floor and lake beds. Best along US coasts. Worldwide, but coarse.', on:false,
+    layer: new ArcExport('https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_global_mosaic_hillshade/ImageServer', {image:true, pane:'depth', maxZoom:19,
+      attribution:'Bathymetry: <a href="https://www.ncei.noaa.gov/products/coastal-elevation-models">NOAA NCEI</a> DEM mosaic'})},
+  gebco: {name:'GEBCO global bathymetry', desc:'Worldwide ocean depth grid, color shaded. A coarse global fallback.', on:false,
+    layer: L.tileLayer.wms('https://wms.gebco.net/mapserv', {layers:'GEBCO_LATEST', format:'image/png', transparent:false, version:'1.3.0', pane:'depth', maxZoom:19,
+      attribution:'<a href="https://www.gebco.net">GEBCO Compilation Group</a> (GEBCO Grid)'})}
+};
+const water = {
+  nhd: {name:'Rivers, streams & lakes (USGS NHD)', desc:'USGS National Hydrography Dataset flowlines, US only. Shows creeks, inflows and outflows. The purple lines inside lakes are NHD flow paths.', on:true,
+    layer: L.tileLayer.wms('https://hydro.nationalmap.gov/arcgis/services/nhd/MapServer/WMSServer', {layers:'4,5,6', format:'image/png', transparent:true, version:'1.3.0', pane:'water', maxZoom:19, opacity:.7,
+      attribution:'Hydrography: <a href="https://www.usgs.gov/national-hydrography">USGS NHD</a>'})},
+  seamark: {name:'Buoys & markers (OpenSeaMap)', desc:'Seamarks, buoys, lights and harbour features.', on:false,
+    layer: L.tileLayer('https://tiles.openseamap.org/seamark/{z}/{x}/{y}.png', {pane:'seamarks', maxZoom:19, minZoom:6,
+      attribution:'Seamarks &copy; <a href="https://www.openseamap.org">OpenSeaMap</a> contributors'})}
+};
+
+// POI layers
+const POI_TYPES = {
+  slipway: {label:'Boat launches', color:'#1fa35a', ch:'L'},
+  fishing: {label:'Fishing spots', color:'#f28c18', ch:'F'},
+  pier:    {label:'Piers / docks', color:'#8b5a2b', ch:'P'},
+  marina:  {label:'Marinas', color:'#2d7ff0', ch:'M'}
+};
+const pois = {};
+for (const k in POI_TYPES) pois[k] = {name: POI_TYPES[k].label+' (OSM)', on: k!=='pier', layer: L.layerGroup(), osm:true, icon: pinIcon(POI_TYPES[k].color, POI_TYPES[k].ch)};
+pois.access = {name:'WA water access sites (WDFW)', desc:'Official WDFW launches and access areas. Discover Pass needed at most.', on:true, layer:L.layerGroup(), icon:pinIcon('#0fb5a8','A')};
+pois.stocked = {name:'Recently stocked lakes (WDFW)', desc:'Fish plants from the last N days (set this in the Stocked tab).', on:true, layer:L.layerGroup(), icon:pinIcon('#e0428f','S')};
+pois.spots = {name:'My Spots', on:true, layer:L.layerGroup(), icon:pinIcon('#ffd23f','★', '#222')};
+
+function pinIcon(bg, ch, fg='#fff'){
+  return L.divIcon({className:'', html:`<div class="pin" style="background:${bg};color:${fg}">${ch}</div>`, iconSize:[26,26], iconAnchor:[13,13], popupAnchor:[0,-12]});
+}
+
+// ---------- Layer UI ----------
+const statusEls = {};
+function setStatus(key, cls, text){ const el = statusEls[key]; if(el){ el.className='status '+cls; el.textContent=text; } }
+let currentBase = localStorage.getItem('fishmap.base') || 'sat';
+if(!bases[currentBase]) currentBase='sat';
+for (const k in bases){
+  const row = document.createElement('div'); row.className='row';
+  row.innerHTML = `<input type="radio" name="base" id="b_${k}" ${k===currentBase?'checked':''}><label for="b_${k}">${bases[k].name}</label>`;
+  row.querySelector('input').onchange = ()=>{ map.removeLayer(bases[currentBase].layer); currentBase=k; bases[k].layer.addTo(map); localStorage.setItem('fishmap.base',k); };
+  $('#baseList').appendChild(row);
+}
+bases[currentBase].layer.addTo(map);
+
+const initQueue = [];
+const layerState = JSON.parse(localStorage.getItem('fishmap.layers') || '{}');
+function addToggle(container, key, def, onChange){
+  const isOn = layerState[key] ?? def.on;
+  const row = document.createElement('div'); row.className='row';
+  row.innerHTML = `<input type="checkbox" id="l_${key}" ${isOn?'checked':''}><label for="l_${key}">${def.name}<span class="status" id="s_${key}"></span>${def.desc?`<small>${def.desc}</small>`:''}</label>`;
+  container.appendChild(row);
+  statusEls[key] = row.querySelector('.status');
+  const cb = row.querySelector('input');
+  cb.onchange = ()=>{ layerState[key]=cb.checked; localStorage.setItem('fishmap.layers', JSON.stringify(layerState)); onChange(cb.checked); };
+  initQueue.push(()=>onChange(isOn));
+}
+function wireTileStatus(key, layer){
+  let pending=0, errors=0, loaded=0;
+  const upd=()=>{ if(!map.hasLayer(layer)) return setStatus(key,'',''); if(pending>0) setStatus(key,'load','loading…'); else if(errors && !loaded) setStatus(key,'err','✕ no response'); else if(loaded) setStatus(key,'ok','✓'); };
+  layer.on('tileloadstart', ()=>{pending++; upd();});
+  layer.on('tileload', ()=>{pending=Math.max(0,pending-1); loaded++; upd();});
+  layer.on('tileerror', ()=>{pending=Math.max(0,pending-1); errors++; upd();});
+  layer.on('remove', ()=>{pending=0; setStatus(key,'','');});
+}
+
+let depthOpacity = +(localStorage.getItem('fishmap.opacity') || 85)/100;
+$('#opacity').value = Math.round(depthOpacity*100); $('#opVal').textContent = Math.round(depthOpacity*100)+'%';
+for (const k in depth){
+  const d = depth[k];
+  if (d.vector){ d.layer = L.featureGroup(); }
+  else { d.layer.setOpacity(depthOpacity); wireTileStatus(k, d.layer); }
+  addToggle($('#depthList'), k, d, on=>{ on ? d.layer.addTo(map) : map.removeLayer(d.layer); if(d.vector && on) loadContours(); });
+}
+$('#opacity').oninput = e=>{
+  depthOpacity = e.target.value/100; $('#opVal').textContent = e.target.value+'%'; localStorage.setItem('fishmap.opacity', e.target.value);
+  for (const k in depth){ const d=depth[k]; if(d.vector) d.layer.eachLayer(l=>l.setStyle && l.setStyle({opacity:depthOpacity})); else d.layer.setOpacity(depthOpacity); }
+};
+for (const k in water){ wireTileStatus(k, water[k].layer); addToggle($('#waterList'), k, water[k], on=> on ? water[k].layer.addTo(map) : map.removeLayer(water[k].layer)); }
+for (const k in pois){ addToggle($('#poiList'), k, pois[k], on=>{ on ? pois[k].layer.addTo(map) : map.removeLayer(pois[k].layer); if(on){ if(pois[k].osm) loadOSM(); if(k==='access') loadAccess(); if(k==='stocked') loadStocked(); } }); }
+
+// depth legend
+const DEPTH_COLORS = ['#b8f1ff','#7fdcff','#45bdf5','#1f8fe0','#1d5fc4','#3a3aa8','#5a2a90'];
+function depthColor(ft){ const b=[5,10,20,30,45,70]; let i=0; while(i<b.length && ft>b[i]) i++; return DEPTH_COLORS[i]; }
+$('#depthLegend').innerHTML = DEPTH_COLORS.map(c=>`<span style="background:${c}"></span>`).join('');
+
+// ---------- WDFW lake contours (vector) ----------
+const WDFW = 'https://geodataservices.wdfw.wa.gov/arcgis/rest/services/ApplicationServices/FishWA_2014_AllLakes_PROD/MapServer';
+const WA_BOUNDS = L.latLngBounds([45.5,-124.9],[49.1,-116.8]);
+let contourReq = 0;
+async function loadContours(){
+  const d = depth.wdfw; if(!map.hasLayer(d.layer)) return;
+  const b = map.getBounds();
+  if (map.getZoom() < 12){ d.layer.clearLayers(); setStatus('wdfw','', b.intersects(WA_BOUNDS)?'zoom in to 12+':''); return; }
+  if (!b.intersects(WA_BOUNDS)){ d.layer.clearLayers(); setStatus('wdfw','','WA only'); return; }
+  const id = ++contourReq; setStatus('wdfw','load','loading…');
+  const env = [b.getWest(),b.getSouth(),b.getEast(),b.getNorth()].join(',');
+  const off = (360/(256*Math.pow(2,map.getZoom()))).toFixed(7);
+  const url = `${WDFW}/19/query?where=1%3D1&geometry=${env}&geometryType=esriGeometryEnvelope&inSR=4326&spatialRel=esriSpatialRelIntersects&outFields=DEPTH_QT_F&returnGeometry=true&outSR=4326&maxAllowableOffset=${off}&resultRecordCount=2000&f=geojson`;
+  try{
+    const gj = await fetchJSON(url);
+    if (id !== contourReq) return;
+    d.layer.clearLayers();
+    const n = (gj.features||[]).length;
+    const labels = [];
+    L.geoJSON(gj, {pane:'contours',
+      style: f=>({color: depthColor(f.properties.DEPTH_QT_F), weight: map.getZoom()>=15?2.5:1.8, opacity: depthOpacity}),
+      onEachFeature: (f, l)=>{
+        const ft = f.properties.DEPTH_QT_F;
+        l.bindTooltip(`${ft} ft`, {sticky:true});
+        l.bindPopup(`<b>${ft} ft contour</b><br><span class="muted">WDFW lake bathymetry (≈${(ft*0.3048).toFixed(1)} m)</span>`);
+        if (map.getZoom()>=14){ const c = f.geometry.coordinates; const line = f.geometry.type==='MultiLineString'? c[0] : c; if(line && line.length>4){ const p=line[Math.floor(line.length/2)]; labels.push(L.marker([p[1],p[0]], {interactive:false, pane:'contours', icon:L.divIcon({className:'dlabel', html:ft, iconSize:null})})); } }
+      }}).addTo(d.layer);
+    labels.slice(0,400).forEach(m=>m.addTo(d.layer));
+    setStatus('wdfw', n? 'ok':'', n? `✓ ${n} lines` : 'none here');
+  }catch(e){ if(id===contourReq) setStatus('wdfw','err','✕ '+e.message); }
+}
+
+// ---------- OSM via Overpass ----------
+const OVERPASS = ['https://overpass-api.de/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter','https://overpass.kumi.systems/api/interpreter'];
+let osmReq=0, osmLastKey='', osmTimer;
+function osmKey(b){ const r=v=>v.toFixed(2); return [r(b.getSouth()),r(b.getWest()),r(b.getNorth()),r(b.getEast())].join(','); }
+function loadOSM(){ clearTimeout(osmTimer); osmTimer=setTimeout(_loadOSM, 600); }
+async function _loadOSM(){
+  const anyOn = Object.keys(POI_TYPES).some(k=>map.hasLayer(pois[k].layer));
+  if(!anyOn) return;
+  if(map.getZoom()<11){ for(const k in POI_TYPES){ pois[k].layer.clearLayers(); setStatus(k,'','zoom in'); } osmLastKey=''; return; }
+  const b = map.getBounds().pad(0.15); const key=osmKey(b); if(key===osmLastKey) return;
+  const bb = `${b.getSouth()},${b.getWest()},${b.getNorth()},${b.getEast()}`;
+  const q = `[out:json][timeout:25];(nwr["leisure"="slipway"](${bb});nwr["leisure"="fishing"](${bb});nwr["fishing"](${bb});nwr["man_made"="pier"](${bb});nwr["leisure"="marina"](${bb}););out center tags 800;`;
+  const id=++osmReq; for(const k in POI_TYPES) setStatus(k,'load','loading…');
+  let data=null, lastErr;
+  for (const ep of OVERPASS){
+    try{ data = await fetchJSON(ep, {method:'POST', body:'data='+encodeURIComponent(q), headers:{'Content-Type':'application/x-www-form-urlencoded'}}, 15000); if(data && data.elements) break; }
+    catch(e){ lastErr=e; data=null; }
+    if(id!==osmReq) return;
+  }
+  if(id!==osmReq) return;
+  if(!data){ for(const k in POI_TYPES) setStatus(k,'err','✕ Overpass busy, pan to retry'); return; }
+  osmLastKey=key;
+  const counts={}; for(const k in POI_TYPES){ pois[k].layer.clearLayers(); counts[k]=0; }
+  for (const el of data.elements){
+    const t = el.tags||{}; const lat = el.lat ?? el.center?.lat, lon = el.lon ?? el.center?.lon; if(lat==null) continue;
+    let type = t.leisure==='slipway'?'slipway' : (t.leisure==='fishing'||t.fishing)?'fishing' : t.leisure==='marina'?'marina' : t.man_made==='pier'?'pier' : null;
+    if(!type) continue;
+    if(type==='pier' && !t.fishing && !(t.name && map.getZoom()>=14) && map.getZoom()<16) continue; // reduce clutter
+    counts[type]++;
+    const rows = Object.entries(t).filter(([k])=>!/^(source|created_by|wikidata)/.test(k)).slice(0,14).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join('');
+    L.marker([lat,lon], {icon: pois[type].icon, title: t.name||POI_TYPES[type].label})
+      .bindPopup(`<div class="pp"><b>${esc(t.name||POI_TYPES[type].label)}</b><br><span class="muted">${POI_TYPES[type].label} · OpenStreetMap</span><table>${rows}</table>
+      <div style="margin-top:6px"><a target="_blank" rel="noopener" href="https://www.openstreetmap.org/${el.type}/${el.id}">View on OSM</a> · <a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}">Directions</a></div></div>`)
+      .addTo(pois[type].layer);
+  }
+  for(const k in POI_TYPES) setStatus(k,'ok','✓ '+counts[k]);
+}
+
+// ---------- WDFW water access ----------
+let accReq=0;
+async function loadAccess(){
+  const L_ = pois.access.layer; if(!map.hasLayer(L_)) return;
+  const b = map.getBounds();
+  if(!b.intersects(WA_BOUNDS)){ L_.clearLayers(); setStatus('access','','WA only'); return; }
+  if(map.getZoom()<10){ L_.clearLayers(); setStatus('access','','zoom in'); return; }
+  const id=++accReq; setStatus('access','load','loading…');
+  const env=[b.getWest(),b.getSouth(),b.getEast(),b.getNorth()].join(',');
+  try{
+    const gj = await fetchJSON(`${WDFW}/0/query?where=1%3D1&geometry=${env}&geometryType=esriGeometryEnvelope&inSR=4326&outFields=*&outSR=4326&f=geojson`);
+    if(id!==accReq) return; L_.clearLayers();
+    (gj.features||[]).forEach(f=>{ const p=f.properties, c=f.geometry.coordinates;
+      L.marker([c[1],c[0]], {icon:pois.access.icon, title:p.FacilityName}).bindPopup(`<div class="pp"><b>${esc(p.FacilityName)}</b><br><span class="muted">WDFW water access site</span><table>
+        <tr><td>Launch</td><td>${esc(p.Launch||'—')}</td></tr><tr><td>Launch type</td><td>${esc(p.LaunchType||'—')}</td></tr><tr><td>Motorized</td><td>${esc(p.Motorized||'—')}</td></tr><tr><td>Restrooms</td><td>${esc(p.Restrooms||'—')}</td></tr></table>
+        <div style="margin-top:6px"><a target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${c[1]},${c[0]}">Directions</a></div></div>`).addTo(L_); });
+    setStatus('access','ok','✓ '+(gj.features||[]).length);
+  }catch(e){ if(id===accReq) setStatus('access','err','✕ '+e.message); }
+}
+
+// ---------- WDFW stocking ----------
+const AB={LTL:'LITTLE',UPR:'UPPER',LWR:'LOWER',N:'NORTH',S:'SOUTH',E:'EAST',W:'WEST',MT:'MOUNT',ST:'SAINT'};
+const DROP=new Set(['LK','LKS','LAKE','LAKES','POND','PONDS','PD','RES','RESERVOIR','THE']);
+function nameKey(n){ n=String(n||'').toUpperCase().replace(/\bT\d+\b/g,'').replace(/[^A-Z0-9 ]/g,' '); return n.split(/\s+/).filter(Boolean).map(w=>AB[w]||w).filter(w=>!DROP.has(w)&&!/^\d+$/.test(w)).sort().join(' '); }
+function prettyLoc(s){ return String(s).replace(/\s+\d{2}\.\d{4}$/,'').replace(/\s+\d{2}\.XXX$/,'').replace(/\bLKS\b/g,'Lakes').replace(/\bLK\b/g,'Lake').replace(/\bCR\b/g,'Creek').replace(/\bR\b/g,'River').replace(/\bRES\b/g,'Reservoir').replace(/\bPD\b/g,'Pond').replace(/\bLTL\b/g,'Little').replace(/\bUPR\b/g,'Upper').replace(/\bLWR\b/g,'Lower').toLowerCase().replace(/\b[a-z]/g,c=>c.toUpperCase()).replace(/\((\w{4})\)/,(m,c)=>'('+c.toUpperCase()+')'); }
+let lakeIndex=null, stockData=null, stockLoading=false, stockGroups=[];
+async function getLakeIndex(){
+  if(lakeIndex) return lakeIndex;
+  const [a,b] = await Promise.all([
+    fetchJSON(`${WDFW}/2/query?where=1%3D1&outFields=LakeName,CountyName,SurfaceAcres,ELEV,PublicManagementType,BoatRampAvailable,WebsiteURL&outSR=4326&f=geojson`, {}, 40000),
+    fetchJSON(`${WDFW}/24/query?where=1%3D1&outFields=*&outSR=4326&f=geojson`, {}, 40000).catch(()=>({features:[]}))]);
+  lakeIndex = new Map();
+  for(const f of a.features||[]){ const p=f.properties; lakeIndex.set(nameKey(p.LakeName)+'|'+String(p.CountyName||'').slice(0,4).toUpperCase(), {c:f.geometry.coordinates, info:p}); }
+  for(const f of b.features||[]){ const p={}; for(const k in f.properties) p[k.split('.').pop()]=f.properties[k];
+    const key=nameKey(p.LakeMapName)+'|'+String(p.CountyName||'').slice(0,4).toUpperCase(); if(!lakeIndex.has(key)) lakeIndex.set(key,{c:f.geometry.coordinates, info:{LakeName:p.LakeMapName, CountyName:p.CountyName, ELEV:p.ElevationFeet, SurfaceAcres:p.Acres, WebsiteURL:p.WebsiteURL}}); }
+  return lakeIndex;
+}
+async function loadStocked(force){
+  if(stockLoading) return; if(stockData && !force){ renderStocked(); return; }
+  stockLoading=true; setStatus('stocked','load','loading…'); $('#stockStatus').textContent='Loading WDFW fish plants…';
+  const days=+$('#stockDays').value; const since=new Date(Date.now()-days*864e5).toISOString().slice(0,10);
+  try{
+    const url=`https://data.wa.gov/resource/6fex-3r7d.json?$where=${encodeURIComponent(`release_start_date >= '${since}'`)}&$order=release_start_date%20DESC&$limit=5000&$select=release_location,county,species,run,number_released,number_of_fish_per_pound,release_start_date,lifestage,facility`;
+    const [rows, idx] = await Promise.all([fetchJSON(url,{},40000), getLakeIndex()]);
+    stockData = rows;
+    const groups = new Map();
+    for(const r of rows){ const g = groups.get(r.release_location) || {loc:r.release_location, county:(r.county||'').trim(), plants:[]}; g.plants.push(r); groups.set(r.release_location, g); }
+    stockGroups = [...groups.values()];
+    for(const g of stockGroups){ const m = g.loc.match(/^(.*?)\s*\(([A-Z]{4})[^)]*\)/); const key = m ? nameKey(m[1])+'|'+m[2] : nameKey(g.loc)+'|'+g.county.slice(0,4).toUpperCase(); const hit = idx.get(key); if(hit){ g.lat=hit.c[1]; g.lon=hit.c[0]; g.info=hit.info; } g.latest=g.plants[0].release_start_date; g.total=g.plants.reduce((s,p)=>s+(+p.number_released||0),0); }
+    renderStocked();
+  }catch(e){ setStatus('stocked','err','✕ '+e.message); $('#stockStatus').textContent='Could not load stocking data: '+e.message; }
+  finally{ stockLoading=false; }
+}
+function plantTable(g){ return `<table>${g.plants.slice(0,12).map(p=>`<tr><td>${esc(p.release_start_date.slice(0,10))}</td><td><b>${esc(p.species)}</b> ${esc(p.lifestage||'')}<br>${(+p.number_released).toLocaleString()} fish${p.number_of_fish_per_pound?` · ${esc(p.number_of_fish_per_pound)}/lb`:''}</td></tr>`).join('')}</table>${g.plants.length>12?`<span class="muted">+${g.plants.length-12} more</span>`:''}`; }
+function stockPopup(g){ const i=g.info||{}; return `<div class="pp"><b>${esc(i.LakeName||prettyLoc(g.loc))}</b><br><span class="muted">${esc(g.county)} County · ${g.total.toLocaleString()} fish planted (last ${$('#stockDays').value} d)</span>${plantTable(g)}${i.SurfaceAcres?`<div class="muted">${Math.round(i.SurfaceAcres)} acres${i.ELEV?` · elev ${i.ELEV} ft`:''}${i.BoatRampAvailable?` · ramp: ${esc(i.BoatRampAvailable)}`:''}</div>`:''}<div style="margin-top:6px"><a target="_blank" rel="noopener" href="https://wdfw.wa.gov/fishing/reports/stocking/trout-plants">WDFW stocking reports</a></div></div>`; }
+function renderStocked(){
+  const L_=pois.stocked.layer; L_.clearLayers();
+  const f=$('#stockFilter').value.trim().toLowerCase();
+  const list = stockGroups.filter(g=>!f || g.loc.toLowerCase().includes(f) || g.plants.some(p=>(p.species||'').toLowerCase().includes(f)));
+  let mapped=0;
+  for(const g of list){ if(g.lat!=null){ mapped++; g.marker=L.marker([g.lat,g.lon],{icon:pois.stocked.icon, title:prettyLoc(g.loc)}).bindPopup(stockPopup(g),{maxWidth:300}).addTo(L_); } }
+  setStatus('stocked','ok',`✓ ${mapped} lakes`);
+  $('#stockStatus').textContent = `${stockData.length} plants at ${list.length} locations · ${mapped} on map`;
+  $('#stockList').innerHTML = list.slice(0,300).map((g,i)=>`<div class="card stockItem" data-i="${stockGroups.indexOf(g)}"><div class="t">${g.lat!=null?'📍':'🔍'} ${esc(prettyLoc(g.loc))}</div><div class="muted">${esc(g.latest.slice(0,10))} · ${[...new Set(g.plants.map(p=>p.species))].map(esc).join(', ')} · ${g.total.toLocaleString()} fish</div></div>`).join('');
+}
+$('#stockList').onclick = async e=>{
+  const el=e.target.closest('.stockItem'); if(!el) return; const g=stockGroups[+el.dataset.i];
+  if(g.lat==null){
+    const nm=prettyLoc(g.loc).replace(/\s*\(.*$/,''); toast('Searching for '+nm+'…');
+    try{ const r=await geocode(`${nm}, ${g.county} County, Washington`); if(!r.length) return toast('Could not locate '+nm);
+      g.lat=r[0].lat; g.lon=r[0].lon; g.marker=L.marker([g.lat,g.lon],{icon:pois.stocked.icon}).bindPopup(stockPopup(g)+'<div class="muted">Location found by name search (approximate)</div>',{maxWidth:300}).addTo(pois.stocked.layer);
+    }catch(err){ return toast('Search failed'); }
+  }
+  if(!map.hasLayer(pois.stocked.layer)) pois.stocked.layer.addTo(map);
+  map.setView([g.lat,g.lon], 14); g.marker && g.marker.openPopup(); if(innerWidth<700) closePanel();
+};
+$('#stockDays').onchange = ()=>loadStocked(true);
+$('#stockFilter').oninput = ()=>stockData && renderStocked();
+
+// ---------- Search ----------
+async function geocode(q){
+  try{
+    const r = await fetchJSON(`https://nominatim.openstreetmap.org/search?format=jsonv2&limit=8&q=${encodeURIComponent(q)}&viewbox=${map.getBounds().pad(2).toBBoxString()}`, {headers:{'Accept-Language':'en'}}, 10000);
+    if(Array.isArray(r) && r.length) return r.map(x=>({name:x.display_name, lat:+x.lat, lon:+x.lon, bbox:x.boundingbox && [[+x.boundingbox[0],+x.boundingbox[2]],[+x.boundingbox[1],+x.boundingbox[3]]], kind:x.type}));
+  }catch(e){ /* fall back */ }
+  const c = map.getCenter();
+  const p = await fetchJSON(`https://photon.komoot.io/api/?limit=8&lat=${c.lat}&lon=${c.lng}&q=${encodeURIComponent(q)}`, {}, 10000);
+  return (p.features||[]).map(f=>{ const pr=f.properties; const ext=pr.extent; return {name:[pr.name,pr.city,pr.county,pr.state,pr.country].filter(Boolean).join(', '), lat:f.geometry.coordinates[1], lon:f.geometry.coordinates[0], bbox: ext && [[ext[3],ext[0]],[ext[1],ext[2]]], kind:pr.osm_value}; });
+}
+let searchMarker;
+function goTo(r){
+  if(r.bbox) map.fitBounds(r.bbox, {maxZoom:15}); else map.setView([r.lat,r.lon], 14);
+  if(searchMarker) map.removeLayer(searchMarker);
+  searchMarker = L.circleMarker([r.lat,r.lon],{radius:7,color:'#fff',weight:2,fillColor:'#2fb3ff',fillOpacity:1}).bindPopup(esc(r.name)).addTo(map);
+  $('#results').style.display='none';
+}
+let searchTimer, lastResults=[];
+$('#search').addEventListener('keydown', async e=>{
+  if(e.key!=='Enter') return; e.preventDefault();
+  const q=e.target.value.trim(); if(!q) return;
+  const m=q.match(/^\s*(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)\s*$/);
+  if(m){ return goTo({lat:+m[1], lon:+m[2], name:q}); }
+  const box=$('#results'); box.style.display='block'; box.innerHTML='<div class="muted">Searching…</div>';
+  try{ lastResults = await geocode(q);
+    if(!lastResults.length){ box.innerHTML='<div class="muted">No results</div>'; return; }
+    if(lastResults.length===1) return goTo(lastResults[0]);
+    box.innerHTML = lastResults.map((r,i)=>`<div data-i="${i}">${esc(r.name)}<span class="muted">${esc(r.kind||'')}</span></div>`).join('');
+  }catch(err){ box.innerHTML='<div class="muted">Search failed: '+esc(err.message)+'</div>'; }
+});
+$('#results').onclick = e=>{ const d=e.target.closest('[data-i]'); if(d) goTo(lastResults[+d.dataset.i]); };
+map.on('click', ()=>$('#results').style.display='none');
+
+// ---------- Locate ----------
+let locLayer = L.layerGroup().addTo(map);
+$('#locateBtn').onclick = ()=>{ toast('Finding your location…'); map.locate({setView:true, maxZoom:14, enableHighAccuracy:true}); };
+map.on('locationfound', e=>{ locLayer.clearLayers(); L.circle(e.latlng,{radius:e.accuracy,color:'#2fb3ff',weight:1,fillOpacity:.1}).addTo(locLayer); L.circleMarker(e.latlng,{radius:8,color:'#fff',weight:3,fillColor:'#2fb3ff',fillOpacity:1}).bindPopup('You are here (±'+Math.round(e.accuracy)+' m)').addTo(locLayer); });
+map.on('locationerror', e=>toast('Location unavailable: '+e.message+(location.protocol==='file:'?' (some phones block location for local files; host it on https)':''), 5000));
+
+// ---------- Modes: spot / measure ----------
+let mode=null;
+function setMode(m){
+  mode = (mode===m)? null : m;
+  $('#addSpotBtn').classList.toggle('on', mode==='spot'); $('#measureBtn').classList.toggle('on', mode==='measure');
+  $('#modeBar').classList.toggle('show', !!mode);
+  map.getContainer().style.cursor = mode? 'crosshair':'';
+  if(mode==='spot') $('#modeText').textContent='Tap the map to drop a spot pin';
+  if(mode==='measure'){ measureClear(); $('#modeText').textContent='Tap points to measure · 0 ft'; }
+  if(!mode) measureFinish();
+}
+$('#addSpotBtn').onclick=()=>setMode('spot');
+$('#addSpotBtn2').onclick=()=>{ if(innerWidth<700) closePanel(); setMode('spot'); };
+$('#measureBtn').onclick=()=>setMode('measure');
+$('#modeDone').onclick=()=>{ if(mode) setMode(mode); };
+
+// measure
+let mPts=[], mLine=null, mLayer=L.layerGroup().addTo(map);
+function fmtDist(m){ const ft=m*3.28084, mi=m/1609.344, nm=m/1852; return mi<0.2? `${Math.round(ft)} ft (${Math.round(m)} m)` : `${mi.toFixed(2)} mi · ${nm.toFixed(2)} nmi · ${(m/1000).toFixed(2)} km`; }
+function measureClear(){ mPts=[]; mLayer.clearLayers(); mLine=null; }
+function measureFinish(){ if(mPts.length<2) mLayer.clearLayers(); }
+function measureAdd(ll){
+  mPts.push(ll); L.circleMarker(ll,{radius:4,color:'#ffd23f',fillOpacity:1}).addTo(mLayer);
+  if(!mLine) mLine=L.polyline(mPts,{color:'#ffd23f',weight:3,dashArray:'6 6'}).addTo(mLayer); else mLine.setLatLngs(mPts);
+  let d=0; for(let i=1;i<mPts.length;i++) d+=mPts[i-1].distanceTo(mPts[i]);
+  $('#modeText').textContent='Distance: '+fmtDist(d);
+  mLine.bindTooltip(fmtDist(d),{permanent:true,direction:'right',offset:[8,0]}).openTooltip(ll);
+}
+
+// coords + depth popup
+function dms(v, pos, neg){ const a=Math.abs(v), d=Math.floor(a), m=(a-d)*60; return `${d}°${m.toFixed(3)}′${v>=0?pos:neg}`; }
+async function clickInfo(ll){
+  const lat=ll.lat.toFixed(5), lon=L.Util.wrapNum(ll.lng,[-180,180],true).toFixed(5);
+  const html = `<div class="pp"><b>${lat}, ${lon}</b><br><span class="muted">${dms(ll.lat,'N','S')} ${dms(+lon,'E','W')}</span>
+    <div id="depthInfo" class="muted" style="margin:6px 0">Bottom elevation: checking…</div>
+    <div class="flex"><button class="btn sm" id="cpBtn">Copy</button><button class="btn sm" id="saveHere">📍 Save spot here</button><a class="btn sm" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}">Directions</a></div></div>`;
+  const pop = L.popup().setLatLng(ll).setContent(html).openOn(map);
+  setTimeout(()=>{ const c=document.getElementById('cpBtn'); if(c) c.onclick=()=>{ navigator.clipboard?.writeText(`${lat}, ${lon}`).then(()=>toast('Copied')).catch(()=>toast(`${lat}, ${lon}`)); };
+    const s=document.getElementById('saveHere'); if(s) s.onclick=()=>{ map.closePopup(); spotForm(ll); }; },0);
+  try{
+    const g = encodeURIComponent(JSON.stringify({x:+lon,y:+lat,spatialReference:{wkid:4326}}));
+    const r = await fetchJSON(`https://gis.ngdc.noaa.gov/arcgis/rest/services/DEM_mosaics/DEM_global_mosaic/ImageServer/identify?geometry=${g}&geometryType=esriGeometryPoint&returnCatalogItems=false&f=json`, {}, 12000);
+    const v = parseFloat(r.value); const el=document.getElementById('depthInfo'); if(!el) return;
+    if(isNaN(v)) el.textContent='Bottom elevation: no data';
+    else el.innerHTML = v<0 ? `≈ <b>${Math.round(-v*3.28084)} ft</b> below sea level (${(-v).toFixed(1)} m)<br><small>NCEI model, coarse. For lakes, depth ≈ lake surface elevation minus this.</small>` : `Elevation ≈ ${Math.round(v*3.28084)} ft (${v.toFixed(1)} m)<br><small>NCEI model. Many inland lakes show only their surface level.</small>`;
+  }catch(e){ const el=document.getElementById('depthInfo'); if(el) el.textContent='Bottom elevation: unavailable'; }
+}
+map.on('click', e=>{
+  if(mode==='measure') return measureAdd(e.latlng);
+  if(mode==='spot'){ setMode('spot'); return spotForm(e.latlng); }
+  clickInfo(e.latlng);
+});
+
+// ---------- My Spots ----------
+const SPOT_KEY='fishmap.spots';
+let spots = loadSpots();
+function loadSpots(){ try{ const g=JSON.parse(localStorage.getItem(SPOT_KEY)||'null'); return g&&g.features? g : {type:'FeatureCollection',features:[]}; }catch(e){ return {type:'FeatureCollection',features:[]}; } }
+function saveSpots(){ localStorage.setItem(SPOT_KEY, JSON.stringify(spots)); renderSpots(); }
+function spotHTML(p){ return `<div class="pp"><b>★ ${esc(p.name||'My spot')}</b><table>${[['Species',p.species],['Depth',p.depth],['Lure / bait',p.lure],['Date',p.date],['Notes',p.notes]].filter(r=>r[1]).map(r=>`<tr><td>${r[0]}</td><td>${esc(r[1])}</td></tr>`).join('')}</table></div>`; }
+function renderSpots(){
+  const L_=pois.spots.layer; L_.clearLayers();
+  spots.features.forEach((f,i)=>{ const [lon,lat]=f.geometry.coordinates; const m=L.marker([lat,lon],{icon:pois.spots.icon, draggable:true, title:f.properties.name});
+    m.bindPopup(spotHTML(f.properties)+`<div class="flex" style="margin-top:6px"><button class="btn sm" data-edit="${i}">Edit</button><button class="btn sm danger" data-del="${i}">Delete</button></div>`);
+    m.on('dragend', ()=>{ const p=m.getLatLng(); f.geometry.coordinates=[+p.lng.toFixed(6), +p.lat.toFixed(6)]; saveSpots(); toast('Spot moved'); });
+    m.addTo(L_); f._m=m; });
+  $('#spotList').innerHTML = spots.features.length ? spots.features.map((f,i)=>{ const p=f.properties; return `<div class="card"><div class="spotItem"><div style="cursor:pointer" data-go="${i}"><div class="t">★ ${esc(p.name||'My spot')}</div><div class="muted">${[p.species,p.depth,p.lure,p.date].filter(Boolean).map(esc).join(' · ')}</div></div><div class="flex"><button class="btn sm" data-edit="${i}">Edit</button><button class="btn sm danger" data-del="${i}">✕</button></div></div></div>`; }).join('') : '<p class="muted">No spots yet. Tap 📍 then tap the map.</p>';
+}
+function spotForm(ll, idx){
+  const p = idx!=null ? spots.features[idx].properties : {date:new Date().toISOString().slice(0,10)};
+  const html=`<div class="form"><b>${idx!=null?'Edit':'New'} spot</b>
+    <label>Name</label><input id="sf_name" value="${esc(p.name||'')}" placeholder="e.g. North point drop-off">
+    <label>Species</label><input id="sf_species" value="${esc(p.species||'')}" placeholder="Rainbow trout, bass, salmon…">
+    <label>Depth</label><input id="sf_depth" value="${esc(p.depth||'')}" placeholder="e.g. 18 ft on the break">
+    <label>Lure / bait</label><input id="sf_lure" value="${esc(p.lure||'')}" placeholder="e.g. drop shot, PowerBait">
+    <label>Date</label><input id="sf_date" type="date" value="${esc(p.date||'')}">
+    <label>Notes</label><textarea id="sf_notes" rows="2" placeholder="Wind, tide, time of day…">${esc(p.notes||'')}</textarea>
+    <div class="flex" style="margin-top:8px"><button class="btn on sm" id="sf_save">Save</button><button class="btn sm" id="sf_cancel">Cancel</button></div></div>`;
+  const pop=L.popup({closeOnClick:false, autoClose:true, maxWidth:280}).setLatLng(ll).setContent(html).openOn(map);
+  setTimeout(()=>{
+    $('#sf_cancel').onclick=()=>map.closePopup(pop);
+    $('#sf_save').onclick=()=>{
+      const props={}; for(const k of ['name','species','depth','lure','date','notes']) props[k]=document.getElementById('sf_'+k).value.trim();
+      if(!props.name) props.name='Spot '+(spots.features.length+1);
+      if(idx!=null) spots.features[idx].properties=props;
+      else spots.features.push({type:'Feature', geometry:{type:'Point', coordinates:[+ll.lng.toFixed(6), +ll.lat.toFixed(6)]}, properties:props});
+      map.closePopup(pop); saveSpots(); toast('Spot saved');
+    };
+    document.getElementById('sf_name').focus();
+  },0);
+}
+document.addEventListener('click', e=>{
+  const ed=e.target.closest('[data-edit]'), del=e.target.closest('[data-del]'), go=e.target.closest('[data-go]');
+  if(ed){ const i=+ed.dataset.edit; const [lon,lat]=spots.features[i].geometry.coordinates; map.closePopup(); if(innerWidth<700) closePanel(); map.setView([lat,lon], Math.max(map.getZoom(),14)); spotForm(L.latLng(lat,lon), i); }
+  else if(del){ const i=+del.dataset.del; if(confirm('Delete this spot?')){ spots.features.splice(i,1); map.closePopup(); saveSpots(); } }
+  else if(go){ const f=spots.features[+go.dataset.go]; const [lon,lat]=f.geometry.coordinates; if(innerWidth<700) closePanel(); map.setView([lat,lon],15); setTimeout(()=>f._m&&f._m.openPopup(),300); }
+});
+$('#exportBtn').onclick=()=>{
+  const out={type:'FeatureCollection', features:spots.features.map(f=>({type:'Feature',geometry:f.geometry,properties:f.properties}))};
+  const blob=new Blob([JSON.stringify(out,null,2)],{type:'application/geo+json'}); const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=`my-fishing-spots-${new Date().toISOString().slice(0,10)}.geojson`; document.body.appendChild(a); a.click(); setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();},500);
+};
+$('#importFile').onchange=async e=>{
+  const file=e.target.files[0]; if(!file) return;
+  try{ const g=JSON.parse(await file.text()); const feats=(g.type==='FeatureCollection'?g.features:[g]).filter(f=>f&&f.geometry&&f.geometry.type==='Point');
+    const have=new Set(spots.features.map(f=>f.geometry.coordinates.join(',')+'|'+f.properties.name));
+    let n=0; for(const f of feats){ const k=f.geometry.coordinates.join(',')+'|'+(f.properties?.name); if(have.has(k)) continue; spots.features.push({type:'Feature',geometry:{type:'Point',coordinates:f.geometry.coordinates.slice(0,2)},properties:f.properties||{}}); n++; }
+    saveSpots(); toast(`Imported ${n} spot${n===1?'':'s'}`);
+    if(n){ map.fitBounds(L.geoJSON({type:'FeatureCollection',features:feats}).getBounds(),{maxZoom:14,padding:[40,40]}); }
+  }catch(err){ toast('Import failed: '+err.message); }
+  e.target.value='';
+};
+renderSpots();
+
+// ---------- Panel ----------
+function openPanel(){ $('#panel').classList.add('open'); }
+function closePanel(){ $('#panel').classList.remove('open'); }
+$('#menuBtn').onclick=()=>$('#panel').classList.toggle('open');
+$('#closePanel').onclick=closePanel;
+$('#tabs').onclick=e=>{ const b=e.target.closest('button'); if(!b) return; document.querySelectorAll('#tabs button').forEach(x=>x.classList.toggle('on',x===b)); document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on', t.id==='tab-'+b.dataset.tab)); if(b.dataset.tab==='stocked') loadStocked(); };
+if(innerWidth>=1000) openPanel();
+
+$('#sources').innerHTML = [
+  ['Esri World Imagery, Street, Topo & Ocean basemaps','https://www.esri.com'],
+  ['NOAA Office of Coast Survey, ENC chart display service (MCS)','https://nauticalcharts.noaa.gov/data/gis-data-and-services.html'],
+  ['NOAA NCEI DEM global mosaic (bathymetry/hillshade and depth lookup)','https://www.ncei.noaa.gov/products/coastal-elevation-models'],
+  ['GEBCO Compilation Group, GEBCO Grid','https://www.gebco.net'],
+  ['WDFW FishWA lakes service (lake contours, lakes, water access sites)','https://wdfw.wa.gov/fishing/locations'],
+  ['WDFW Fish Plants dataset, data.wa.gov','https://data.wa.gov/d/6fex-3r7d'],
+  ['USGS National Hydrography Dataset (NHD)','https://www.usgs.gov/national-hydrography'],
+  ['OpenSeaMap seamarks','https://www.openseamap.org'],
+  ['OpenStreetMap contributors (ODbL), via the Overpass API','https://www.openstreetmap.org/copyright'],
+  ['Search: Nominatim (OSM) and Photon by Komoot','https://nominatim.org']
+].map(([t,u])=>`• <a href="${u}" target="_blank" rel="noopener">${t}</a>`).join('<br>');
+map.attributionControl.getContainer().addEventListener('click',e=>{ if(e.target.tagName!=='A') e.currentTarget.classList.toggle('full'); });
+map.attributionControl.addAttribution('WDFW, data.wa.gov · USGS NHD · OSM contributors (Overpass) · <b>Not for navigation</b>');
+
+// ---------- View-driven loading ----------
+let viewTimer;
+map.on('moveend', ()=>{ clearTimeout(viewTimer); viewTimer=setTimeout(()=>{ loadContours(); loadOSM(); loadAccess(); }, 350); });
+if(map.hasLayer(pois.stocked.layer)) setTimeout(()=>loadStocked(), 800);
+initQueue.forEach(f=>f());
+window.fishmap = {map, depth, water, pois, bases}; // for debugging
+})();
+</script>
+</body>
+</html>
