@@ -7,6 +7,19 @@ A simple, phone-first fishing map: satellite imagery with **filled lake depth ba
 
 Install it: open it in Chrome (Android) and choose **Add to Home Screen** / **Install app**, or in Safari (iPhone) tap Share → **Add to Home Screen**. The app shell then opens without a signal. Map tiles and data you've already viewed come from the cache. Anything new needs a connection.
 
+## Depths: best source per area (v4)
+- **Surveyed WA lakes (~255):** WA Ecology / USGS lake surveys. You get 5 ft filled bands plus the **exact surveyed contour lines** with depth labels at zoom 14+. Tap the water to read the depth, interpolated between the two nearest contours (for example "≈ 23 ft, between the 20 and 25 ft contours"). The public service doesn't publish survey years. Ecology's old MapServer has a few extra lakes (such as Pine Lake). The app retries it every 3 minutes while it's down. Lakes that have contour lines but no bands get filled from the closed contour rings.
+- **NOAA-charted water** (Lake Washington, Lake Union, Puget Sound, the Columbia…): NOAA ENC depth areas (DRVAL1–DRVAL2) as filled bands at zoom 10+, and sounding numbers in feet at zoom 15+. Tapping shows the nearest sounding, its survey date and the chart cell. These depths are below chart datum.
+- **Everywhere else on the coast:** the NOAA NCEI DEM mosaic, which is CUDEM 1/9 arc-second (~3 m) around Puget Sound. Taps say "model estimate, low accuracy".
+- **Every other lake, pond, reservoir and marsh:** the USGS NHDPlus HR outline (plus OSM water) with a gray hatch, and "No depth survey available".
+- Depths are approximate; surveys may be old; water levels change.
+
+## Creeks and water features (v4)
+- NHDPlus HR flowlines with the artificial paths inside lakes removed. Lines are aqua with a white casing, wider for bigger streams, dashed for intermittent ones and thin for canals. Names appear at zoom 13+. Tap a creek for its name, type and flow status, plus a reminder about WDFW rules.
+- Inflow and outflow arrows mark where creeks meet a lake. They're counted on the lake card and in Gems.
+- Springs, waterfalls, dams and weirs (NHD points + OSM) appear at zoom 14+.
+- **Water near me** (in the Spots tab) lists every mapped water body around you, nearest first.
+
 ## Tabs
 - **Map:** the map itself. Tap a lake's depth bands for the **lake info sheet**, which has area, max depth, depth bands, recent WDFW stocking, launches and parking, current conditions (Open-Meteo: temperature, wind, pressure trend, sunrise and sunset), an approximate solunar bite window, drop-offs, and WDFW links.
 - **Spots:** your saved spots, sorted by distance from you, with search, plus **Export backup / Import**. The backup is a GeoJSON file of spots and catches, with photos included as data URLs.
