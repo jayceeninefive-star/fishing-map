@@ -1,9 +1,36 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-10-13T12:43:10+00:00",
+ "checkedAt": "2026-10-13T21:42:04+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Marine Area 9 (Admiralty Inlet), Marine Area 12 (Hood Canal) shellfish beaches update",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/marine-area-9-admiralty-inlet-marine-area-12-hood-canal-shellfish-beaches-update-2026-10",
+   "published": "2026-10-13T13:47:32-07:00",
+   "effective": "Oct. 14, 2026, until further notice.",
+   "start": "2026-10-14",
+   "end": null,
+   "openEnded": true,
+   "locations": "",
+   "action": "Extends clam, mussel, and oyster harvest at Belfair State Park, opens clam, mussel and oyster harvest at Duckabush Tidelands and Triton Cove Tidelands, and extends oyster harvest at Point Whitney Tidelands and Point Whitney Lagoon; opens and modifies other previously announced changes to public shellfish beaches in marine areas 9 and 12.",
+   "species": "Clams, mussels, and oysters.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Admiralty Inlet",
+     "county": null
+    },
+    {
+     "name": "Hood Canal",
+     "county": null
+    }
+   ],
+   "marineAreas": [
+    "9",
+    "12"
+   ]
+  },
   {
    "title": "Marine Area 8-1 (Deception Pass, Hope Island, and Skagit Bay) and Marine Area 8-2 (Ports Susan and Gardner) opening for late-season recreational crab fishing",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/marine-area-8-1-deception-pass-hope-island-and-skagit-bay-and-marine-area-8-2-ports-susan-and-2026-10",
@@ -233,30 +260,6 @@
    "species": null,
    "closure": false,
    "waters": [],
-   "marineAreas": []
-  },
-  {
-   "title": "Stillaguamish River mainstem to open for recreational fishing",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/stillaguamish-river-mainstem-open-recreational-fishing-2026-09",
-   "published": "2026-09-25T14:42:08-07:00",
-   "effective": "Oct. 1-Nov. 1, 2026.",
-   "start": "2026-10-01",
-   "end": "2026-11-01",
-   "openEnded": false,
-   "locations": "",
-   "action": "Returns Stillaguamish River mainstem to permanent rules listed in the Washington Sport Fishing Rules pamphlet , opening salmon and game fish seasons. Maintains previously announced closure for North Fork Stillaguamish River.",
-   "species": "All species (coho salmon and gamefish).",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Stillaguamish River",
-     "county": null
-    },
-    {
-     "name": "North Fork Stillaguamish River",
-     "county": null
-    }
-   ],
    "marineAreas": []
   },
   {
