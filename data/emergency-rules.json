@@ -1,9 +1,53 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-10-15T15:47:38+00:00",
+ "checkedAt": "2026-10-15T21:44:18+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Cascade River to open seven days per week to fishing, and temporary closure implemented in a portion of the Skagit River",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/cascade-river-open-seven-days-week-fishing-and-temporary-closure-implemented-portion-skagit-river-2026-10",
+   "published": "2026-10-15T13:15:15-07:00",
+   "effective": "Immediately through Oct. 31, 2026.",
+   "start": "2026-10-15",
+   "end": "2026-10-31",
+   "openEnded": false,
+   "locations": null,
+   "action": "Opens a portion of the Cascade River to fishing seven days per week. Maintains previously announced bait prohibitions, single-point barbless hooks requirement for salmon on Cascade and Skagit rivers, and a reduced daily limit of two coho on the upper Skagit River. Updates temporary fishing closures scheduled for tribal fisheries on Skagit River.",
+   "species": "All species.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Cascade River",
+     "county": null
+    },
+    {
+     "name": "Skagit River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Clearwater River to close to all fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/clearwater-river-close-all-fishing-2026-10",
+   "published": "2026-10-15T13:12:24-07:00",
+   "effective": "Oct. 16, 2026, until further notice.",
+   "start": "2026-10-16",
+   "end": null,
+   "openEnded": true,
+   "locations": "Clearwater River (Jefferson County) from the mouth upstream.",
+   "action": "Closes all fishing on the Clearwater River.",
+   "species": "All species.",
+   "closure": true,
+   "waters": [
+    {
+     "name": "Clearwater River",
+     "county": "Jefferson"
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Marine Area 9 (Admiralty Inlet), Marine Area 12 (Hood Canal) shellfish beaches update",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/marine-area-9-admiralty-inlet-marine-area-12-hood-canal-shellfish-beaches-update-2026-10",
@@ -53,30 +97,6 @@
     "8-1",
     "8-2"
    ]
-  },
-  {
-   "title": "Skagit River fishing updates",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/skagit-river-fishing-updates-2026-10",
-   "published": "2026-10-09T14:06:16-07:00",
-   "effective": "Oct. 9–31, 2026.",
-   "start": "2026-10-09",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": null,
-   "action": "Maintains previously announced bait prohibitions, single-point barbless hooks requirement for salmon, and reduced daily limit of two coho on the upper Skagit River. Maintains previously announced rules for the Cascade River. Updates fishing closure schedule for tribal fisheries in a portion of Skagit River.",
-   "species": "All species, coho salmon.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Skagit River",
-     "county": null
-    },
-    {
-     "name": "Cascade River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
   },
   {
    "title": "Stillaguamish River to close to all fishing Oct. 9",
@@ -137,33 +157,6 @@
     }
    ],
    "marineAreas": []
-  },
-  {
-   "title": "Marine Area 9 (Admiralty Inlet), Marine Area 12 (Hood Canal) shellfish beaches update",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/marine-area-9-admiralty-inlet-marine-area-12-hood-canal-shellfish-beaches-update-2026-09-0",
-   "published": "2026-09-30T14:43:48-07:00",
-   "effective": "Sept. 30, 2026, until further notice.",
-   "start": "2026-09-30",
-   "end": null,
-   "openEnded": true,
-   "locations": "",
-   "action": "Extends clam, mussel, and oyster harvest at Belfair State Park, Point Whitney Tidelands, and Point Whitney Lagoon; and maintains other previously announced changes to public beaches in marine areas 9 and 12.",
-   "species": "Clams, mussels, and oysters.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Admiralty Inlet",
-     "county": null
-    },
-    {
-     "name": "Hood Canal",
-     "county": null
-    }
-   ],
-   "marineAreas": [
-    "9",
-    "12"
-   ]
   },
   {
    "title": "Upper Columbia River salmon fishery update",
@@ -260,30 +253,6 @@
    "species": null,
    "closure": false,
    "waters": [],
-   "marineAreas": []
-  },
-  {
-   "title": "Skagit and Cascade River fishing updates",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/skagit-and-cascade-river-fishing-updates-2026-09-0",
-   "published": "2026-09-25T14:40:06-07:00",
-   "effective": "Oct. 1–31, 2026.",
-   "start": "2026-10-01",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": null,
-   "action": "Opens fishing in portions of Skagit River and Cascade River. This rule also reduces the daily limit of coho on the upper Skagit River, prohibits bait, and requires single-point barbless hooks for salmon; and schedules two temporary closure periods during tribal fisheries.",
-   "species": "All species, coho salmon.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Cascade River",
-     "county": null
-    },
-    {
-     "name": "Skagit River",
-     "county": null
-    }
-   ],
    "marineAreas": []
   },
   {
@@ -466,26 +435,6 @@
     {
      "name": "Columbia River",
      "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Quillayute River closing to all fishing due to low flows and poor water conditions",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/quillayute-river-closing-all-fishing-due-low-flows-and-poor-water-conditions-2026-09",
-   "published": "2026-09-08T16:06:20-07:00",
-   "effective": "Sept. 9, 2026, until further notice.",
-   "start": "2026-09-09",
-   "end": null,
-   "openEnded": true,
-   "locations": "Quillayute River (Clallam County) from the Olympic National Park boundary upstream to the confluence of Sol Duc and Bogachiel rivers.",
-   "action": "Closes fishing.",
-   "species": "All species.",
-   "closure": true,
-   "waters": [
-    {
-     "name": "Quillayute River",
-     "county": "Clallam"
     }
    ],
    "marineAreas": []
