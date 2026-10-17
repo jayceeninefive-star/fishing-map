@@ -1,9 +1,24 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-10-16T18:50:02+00:00",
+ "checkedAt": "2026-10-17T00:55:08+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Hoh and Quillayute watersheds closing to all fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/hoh-and-quillayute-watersheds-closing-all-fishing-2026-10",
+   "published": "2026-10-16T15:37:49-07:00",
+   "effective": "Oct. 19, 2026, until further notice.",
+   "start": "2026-10-19",
+   "end": null,
+   "openEnded": true,
+   "locations": "",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": true,
+   "waters": [],
+   "marineAreas": []
+  },
   {
    "title": "Cascade River to open seven days per week to fishing, and temporary closure implemented in a portion of the Skagit River",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/cascade-river-open-seven-days-week-fishing-and-temporary-closure-implemented-portion-skagit-river-2026-10",
@@ -153,26 +168,6 @@
    "waters": [
     {
      "name": "Snohomish River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Upper Columbia River salmon fishery update",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/upper-columbia-river-salmon-fishery-update-2026-09",
-   "published": "2026-09-29T17:15:35-07:00",
-   "effective": "Sept. 30–Oct. 15, 2026.",
-   "start": "2026-09-30",
-   "end": "2026-10-15",
-   "openEnded": false,
-   "locations": "From Priest Rapids Dam to Rock Island Dam.",
-   "action": "Opens coho retention opportunities from Priest Rapids Dam to Rock Island Dam.",
-   "species": "Coho salmon.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Columbia River",
      "county": null
     }
    ],
@@ -546,28 +541,6 @@
     }
    ],
    "marineAreas": []
-  },
-  {
-   "title": "Puget Sound shrimp fishery update",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/puget-sound-shrimp-fishery-update-2026-07",
-   "published": "2026-07-27T14:33:30-07:00",
-   "effective": null,
-   "start": null,
-   "end": null,
-   "openEnded": false,
-   "locations": null,
-   "action": "Opens the fishery for all shrimp in Marine Area 6 except in the Discovery Bay Shrimp District on August 2. Opens the fishery for shrimp other than spot shrimp in Marine Area 6 except in the Discovery Bay Shrimp District from August 3 through October 15.",
-   "species": "All shrimp species which include spot shrimp, coonstripe shrimp, dock shrimp, pink shrimp, and sidestripe shrimp.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Discovery Bay",
-     "county": null
-    }
-   ],
-   "marineAreas": [
-    "6"
-   ]
   },
   {
    "title": "WDFW classifies invasive golden mussels as prohibited statewide",
