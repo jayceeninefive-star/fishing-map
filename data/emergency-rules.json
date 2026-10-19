@@ -1,7 +1,7 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-10-19T15:49:09+00:00",
+ "checkedAt": "2026-10-19T18:54:09+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
   {
@@ -430,26 +430,6 @@
     {
      "name": "Columbia River",
      "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Daily limits removed from Fish Lake ahead of rehabilitation",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/daily-limits-removed-fish-lake-ahead-rehabilitation-2026-09",
-   "published": "2026-09-01T12:04:37-07:00",
-   "effective": "Immediately through Oct. 17, 2026.",
-   "start": "2026-09-01",
-   "end": "2026-10-17",
-   "openEnded": false,
-   "locations": "Fish Lake (Spokane County)",
-   "action": "Opens fishing with no size restrictions or daily limit for all species.",
-   "species": "All species",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Fish Lake",
-     "county": "Spokane"
     }
    ],
    "marineAreas": []
