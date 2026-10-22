@@ -1,9 +1,197 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-10-21T12:55:57+00:00",
+ "checkedAt": "2026-10-22T00:56:20+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Copalis River, Joe Creek, and Moclips River closing to all fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/copalis-river-joe-creek-and-moclips-river-closing-all-fishing-2026-10",
+   "published": "2026-10-21T15:55:15-07:00",
+   "effective": "Oct. 24, 2026, until further notice.",
+   "start": "2026-10-24",
+   "end": null,
+   "openEnded": true,
+   "locations": "",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": true,
+   "waters": [
+    {
+     "name": "Copalis River",
+     "county": null
+    },
+    {
+     "name": "Joe Creek",
+     "county": null
+    },
+    {
+     "name": "Moclips River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Upper Quinault River closing to all fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/upper-quinault-river-closing-all-fishing-2026-10",
+   "published": "2026-10-21T15:53:59-07:00",
+   "effective": "Oct. 24, 2026, until further notice.",
+   "start": "2026-10-24",
+   "end": null,
+   "openEnded": true,
+   "locations": "Upper Quinault River from the mouth at the upper end of Lake Quinault to Olympic National Park Boundary.",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": true,
+   "waters": [
+    {
+     "name": "Lake Quinault",
+     "county": null
+    },
+    {
+     "name": "Quinault River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Salmon River closing to all fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/salmon-river-closing-all-fishing-2026-10",
+   "published": "2026-10-21T15:51:51-07:00",
+   "effective": "Oct. 24, 2026, until further notice.",
+   "start": "2026-10-24",
+   "end": null,
+   "openEnded": true,
+   "locations": "Salmon River, outside of Quinault Indian Reservation and Olympic National Park.",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": true,
+   "waters": [
+    {
+     "name": "Salmon River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Willapa Bay freshwater tributaries close to all recreational fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/willapa-bay-freshwater-tributaries-close-all-recreational-fishing-2026-10",
+   "published": "2026-10-21T15:49:27-07:00",
+   "effective": "Oct. 24, 2026, until further notice.",
+   "start": "2026-10-24",
+   "end": null,
+   "openEnded": true,
+   "locations": "",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Willapa Bay",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Marine Area 2-1 (Willapa Bay) to close to all recreational fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/marine-area-2-1-willapa-bay-close-all-recreational-fishing-2026-10",
+   "published": "2026-10-21T15:46:33-07:00",
+   "effective": "Oct. 24, 2026, until further notice.",
+   "start": "2026-10-24",
+   "end": null,
+   "openEnded": true,
+   "locations": "Marine Area 2-1 (Willapa Bay).",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Willapa Bay",
+     "county": null
+    }
+   ],
+   "marineAreas": [
+    "2-1"
+   ]
+  },
+  {
+   "title": "Marine Area 2-2 (Grays Harbor) closing to all fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/marine-area-2-2-grays-harbor-closing-all-fishing-2026-10",
+   "published": "2026-10-21T15:44:36-07:00",
+   "effective": "Oct. 24, 2026, until further notice.",
+   "start": "2026-10-24",
+   "end": null,
+   "openEnded": true,
+   "locations": "Marine Area 2-2 (Grays Harbor) including Humptulips North Bay and East Grays Harbor but excluding the Ocean Shores and Westport boat basins.",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": true,
+   "waters": [
+    {
+     "name": "Grays Harbor",
+     "county": null
+    },
+    {
+     "name": "Humptulips North Bay",
+     "county": null
+    },
+    {
+     "name": "East Grays Harbor",
+     "county": null
+    }
+   ],
+   "marineAreas": [
+    "2-2"
+   ]
+  },
+  {
+   "title": "Grays Harbor tributary streams closing to all fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/grays-harbor-tributary-streams-closing-all-fishing-2026-10",
+   "published": "2026-10-21T15:43:16-07:00",
+   "effective": "Oct. 24, 2026, until further notice.",
+   "start": "2026-10-24",
+   "end": null,
+   "openEnded": true,
+   "locations": "",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": true,
+   "waters": [
+    {
+     "name": "Grays Harbor",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Hatchery coho daily limit reduced in the Dungeness River",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/hatchery-coho-daily-limit-reduced-dungeness-river-2026-10",
+   "published": "2026-10-21T15:34:32-07:00",
+   "effective": "Oct. 23–Nov. 30, 2026.",
+   "start": "2026-10-23",
+   "end": "2026-11-30",
+   "openEnded": false,
+   "locations": "Dungeness River from the mouth to the Gray Wolf River at Dungeness Forks Campground.",
+   "action": "Reduces the salmon daily limit to two hatchery coho salmon.",
+   "species": "Salmon.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Dungeness River Dungeness River",
+     "county": null
+    },
+    {
+     "name": "Gray Wolf River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Hoh and Quillayute watersheds closing to all fishing",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/hoh-and-quillayute-watersheds-closing-all-fishing-2026-10",
