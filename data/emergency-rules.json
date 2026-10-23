@@ -1,9 +1,29 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-10-22T21:43:16+00:00",
+ "checkedAt": "2026-10-23T01:00:02+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Skykomish River to remain closed to salmon fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/skykomish-river-remain-closed-salmon-fishing-2026-10",
+   "published": "2026-10-22T16:23:45-07:00",
+   "effective": "Nov. 1–30, 2026.",
+   "start": "2026-11-01",
+   "end": "2026-11-30",
+   "openEnded": false,
+   "locations": "Skykomish River from the mouth to the railroad bridge at Big Eddy.",
+   "action": "Closes all salmon fishing.",
+   "species": "Salmon.",
+   "closure": true,
+   "waters": [
+    {
+     "name": "Skykomish River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Copalis River, Joe Creek, and Moclips River closing to all fishing",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/copalis-river-joe-creek-and-moclips-river-closing-all-fishing-2026-10",
