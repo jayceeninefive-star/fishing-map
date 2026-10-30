@@ -1,9 +1,29 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-10-30T15:59:42+00:00",
+ "checkedAt": "2026-10-30T18:57:16+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Tokul Creek opens for game fish Nov. 1",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/tokul-creek-opens-game-fish-nov-1-2026-10",
+   "published": "2026-10-30T11:53:51-07:00",
+   "effective": "Nov. 1, 2026–Jan. 14, 2027.",
+   "start": "2026-11-01",
+   "end": "2027-01-14",
+   "openEnded": false,
+   "locations": "Tokul Creek, from mouth to the posted boundary marker downstream of diversion dam.",
+   "action": "Opens game fish seasons.",
+   "species": "Game fish.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Tokul Creek",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Salmon seasons for Skagit and Cascade rivers extended through Nov. 15",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/salmon-seasons-skagit-and-cascade-rivers-extended-through-nov-15-2026-10",
