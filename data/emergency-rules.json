@@ -1,9 +1,31 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-04T01:17:23+00:00",
+ "checkedAt": "2026-11-04T17:16:00+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Marine Area 12 (Hood Canal) salmon seasons close Nov. 5",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/marine-area-12-hood-canal-salmon-seasons-close-nov-5-2026-11",
+   "published": "2026-11-04T08:28:18-08:00",
+   "effective": "Nov. 5–30, 2026.",
+   "start": "2026-11-05",
+   "end": "2026-11-30",
+   "openEnded": false,
+   "locations": "Marine Area 12, including the Hoodsport Hatchery Zone.",
+   "action": "Closes all recreational salmon fishing.",
+   "species": "All salmon.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Hood Canal",
+     "county": null
+    }
+   ],
+   "marineAreas": [
+    "12"
+   ]
+  },
   {
    "title": "Razor clam digs approved for Mocrocks and Copalis beaches Nov. 7–11",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/razor-clam-digs-approved-mocrocks-and-copalis-beaches-nov-7-11-2026-11",
