@@ -1,9 +1,24 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-03T07:24:30+00:00",
+ "checkedAt": "2026-11-04T01:17:23+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Razor clam digs approved for Mocrocks and Copalis beaches Nov. 7–11",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/razor-clam-digs-approved-mocrocks-and-copalis-beaches-nov-7-11-2026-11",
+   "published": "2026-11-03T14:57:43-08:00",
+   "effective": "Nov. 7–11, 2026.",
+   "start": "2026-11-07",
+   "end": "2026-11-11",
+   "openEnded": false,
+   "locations": "",
+   "action": "Opens Razor clam seasons for Mocrocks and Copalis beaches.",
+   "species": "Razor Clams.",
+   "closure": false,
+   "waters": [],
+   "marineAreas": []
+  },
   {
    "title": "Tokul Creek opens for game fish Nov. 1",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/tokul-creek-opens-game-fish-nov-1-2026-10",
@@ -263,30 +278,6 @@
    "marineAreas": []
   },
   {
-   "title": "Cascade River to open seven days per week to fishing, and temporary closure implemented in a portion of the Skagit River",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/cascade-river-open-seven-days-week-fishing-and-temporary-closure-implemented-portion-skagit-river-2026-10",
-   "published": "2026-10-15T13:15:15-07:00",
-   "effective": "Immediately through Oct. 31, 2026.",
-   "start": "2026-10-15",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": null,
-   "action": "Opens a portion of the Cascade River to fishing seven days per week. Maintains previously announced bait prohibitions, single-point barbless hooks requirement for salmon on Cascade and Skagit rivers, and a reduced daily limit of two coho on the upper Skagit River. Updates temporary fishing closures scheduled for tribal fisheries on Skagit River.",
-   "species": "All species.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Cascade River",
-     "county": null
-    },
-    {
-     "name": "Skagit River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
    "title": "Clearwater River to close to all fishing",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/clearwater-river-close-all-fishing-2026-10",
    "published": "2026-10-15T13:12:24-07:00",
@@ -357,26 +348,6 @@
    ]
   },
   {
-   "title": "Stillaguamish River to close to all fishing Oct. 9",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/stillaguamish-river-close-all-fishing-oct-9-2026-10",
-   "published": "2026-10-07T16:56:37-07:00",
-   "effective": "Oct. 9 – Nov. 1, 2026.",
-   "start": "2026-10-09",
-   "end": "2026-11-01",
-   "openEnded": false,
-   "locations": "Stillaguamish River from Marine Drive (south of Stanwood) upstream to the forks at the confluence of the North Fork and South Fork Stillaguamish rivers near Arlington.",
-   "action": "Closes recreational fishing in the mainstem Stillaguamish River.",
-   "species": "All species.",
-   "closure": true,
-   "waters": [
-    {
-     "name": "Stillaguamish River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
    "title": "Quillayute River reopens to fishing with reduced retention limits and no bait",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/quillayute-river-reopens-fishing-reduced-retention-limits-and-no-bait-2026-10",
    "published": "2026-10-05T16:40:16-07:00",
@@ -392,26 +363,6 @@
     {
      "name": "Quillayute River",
      "county": "Clallam"
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Snohomish River to close to all fishing Oct. 3",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/snohomish-river-close-all-fishing-oct-3-2026-10",
-   "published": "2026-10-01T16:04:33-07:00",
-   "effective": "Oct. 3–Nov. 1, 2026.",
-   "start": "2026-10-03",
-   "end": "2026-11-01",
-   "openEnded": false,
-   "locations": "Snohomish River, from the mouth to the confluence of the Skykomish and Snoqualmie rivers.",
-   "action": "Closes all fishing.",
-   "species": "All species.",
-   "closure": true,
-   "waters": [
-    {
-     "name": "Snohomish River",
-     "county": null
     }
    ],
    "marineAreas": []
@@ -437,26 +388,6 @@
     "9",
     "12"
    ]
-  },
-  {
-   "title": "Mineral Lake fishing season extended through Oct. 31",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/mineral-lake-fishing-season-extended-through-oct-31-2026-09",
-   "published": "2026-09-29T13:16:47-07:00",
-   "effective": "Oct. 1–31, 2026.",
-   "start": "2026-10-01",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": "Mineral Lake (Lewis County).",
-   "action": "Opens the Mineral Lake game fish season through Oct. 31 annually.",
-   "species": "Game fish.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Mineral Lake",
-     "county": "Lewis"
-    }
-   ],
-   "marineAreas": []
   },
   {
    "title": "Icicle River to open for coho salmon retention",
@@ -494,26 +425,6 @@
    "marineAreas": []
   },
   {
-   "title": "Lower Columbia River salmon and steelhead fishery update",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-columbia-river-salmon-and-steelhead-fishery-update-2026-09-0",
-   "published": "2026-09-24T15:11:51-07:00",
-   "effective": "Sept. 26–Oct. 31, 2026.",
-   "start": "2026-09-26",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": "",
-   "action": "Opens Chinook retention from Buoy 10 to the Highway 395 Bridge at Pasco and coho retention from the west end of Puget Island to the Highway 395 Bridge at Pasco.",
-   "species": "Salmon.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Columbia River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
    "title": "Hanford Reach fall Chinook fishery update",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/hanford-reach-fall-chinook-fishery-update-2026-09",
    "published": "2026-09-22T09:49:46-07:00",
@@ -528,50 +439,6 @@
    "waters": [
     {
      "name": "Columbia River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Lower Deschutes River (Thurston County) closed to all fishing",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-deschutes-river-thurston-county-closed-all-fishing-2026-09",
-   "published": "2026-09-21T11:48:02-07:00",
-   "effective": "Sept. 22–Oct. 31, 2026.",
-   "start": "2026-09-22",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": "Deschutes River in Thurston County from the mouth (a line projected across the river 400 feet downstream of the lower Tumwater Falls fish ladder) to the Old Highway 99 (Capital Boulevard Southeast) Bridge.",
-   "action": "Closes all fishing.",
-   "species": "All species.",
-   "closure": true,
-   "waters": [
-    {
-     "name": "Deschutes River",
-     "county": "Thurston"
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Lake Washington reopens for salmon fishing",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lake-washington-reopens-salmon-fishing-2026-09",
-   "published": "2026-09-18T14:36:05-07:00",
-   "effective": "Immediately through Oct. 31, 2026.",
-   "start": "2026-09-18",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": "Lake Washington (King County) north of Highway 520 Bridge and east of Montlake Bridge, including the portion of the Sammamish River near Kenmore from 68th Avenue Northeast downstream.",
-   "action": "Returns Lake Washington to permanent rules listed in the Washington Sport Fishing Rules , reopening salmon fishing.",
-   "species": "Coho salmon.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Lake Washington",
-     "county": "King"
-    },
-    {
-     "name": "Sammamish River",
      "county": null
     }
    ],
@@ -618,90 +485,6 @@
    "marineAreas": []
   },
   {
-   "title": "Snake River fall Chinook fishery update",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/snake-river-fall-chinook-fishery-update-2026-09",
-   "published": "2026-09-16T16:14:11-07:00",
-   "effective": null,
-   "start": null,
-   "end": null,
-   "openEnded": false,
-   "locations": "",
-   "action": "Closes retention of wild (unmarked) adult Chinook in Snake River beginning Sept. 18.",
-   "species": "Chinook salmon.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Snake River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Yakima River fall salmon fishery to open",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/yakima-river-fall-salmon-fishery-open-2026-09",
-   "published": "2026-09-11T15:39:20-07:00",
-   "effective": "Sept. 15-Oct. 31, 2026.",
-   "start": "2026-09-15",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": "Yakima River from the Highway 240 bridge in Richland (river mile 2.1) to the Grant Avenue Bridge in Prosser (river mile 47.0).",
-   "action": "Opens the lower Yakima River salmon retention.",
-   "species": "Chinook and coho salmon.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Yakima River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Lower Naselle River gear restriction update",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-naselle-river-gear-restriction-update-2026-08",
-   "published": "2026-08-25T16:11:26-07:00",
-   "effective": "Oct. 15–31, 2026",
-   "start": "2026-10-15",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": "Naselle River, from the confluence of the South Fork upstream to the Highway 4 bridge.",
-   "action": "Rescinds requirement for bait or lure to be suspended below a float, except when trolling from a floating device, beginning Oct. 15.",
-   "species": "All species.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Naselle River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Upper Green (Duwamish) River closed to fishing from Sept. 16–Oct. 31",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/upper-green-duwamish-river-closed-fishing-sept-16-oct-31-2026-08",
-   "published": "2026-08-17T16:42:24-07:00",
-   "effective": "Sept. 16–Oct. 31, 2026.",
-   "start": "2026-09-16",
-   "end": "2026-10-31",
-   "openEnded": false,
-   "locations": "Green (Duwamish) River, from Auburn Black Diamond Road Bridge to the Tacoma Municipal Boundary Marker.",
-   "action": "Closes all fishing.",
-   "species": "All species.",
-   "closure": true,
-   "waters": [
-    {
-     "name": "Green River",
-     "county": null
-    },
-    {
-     "name": "Duwamish River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
    "title": "Green (Duwamish) River Chinook retention closed",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/green-duwamish-river-chinook-retention-closed-2026-08",
    "published": "2026-08-17T16:41:22-07:00",
@@ -720,26 +503,6 @@
     },
     {
      "name": "Duwamish River",
-     "county": null
-    }
-   ],
-   "marineAreas": []
-  },
-  {
-   "title": "Fall Chinook harvest to open in the Snake River",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/fall-chinook-harvest-open-snake-river-2026-08",
-   "published": "2026-08-06T09:38:10-07:00",
-   "effective": null,
-   "start": null,
-   "end": null,
-   "openEnded": false,
-   "locations": "",
-   "action": "Opens Chinook salmon retention in areas of the Snake River.",
-   "species": "Chinook salmon.",
-   "closure": false,
-   "waters": [
-    {
-     "name": "Snake River",
      "county": null
     }
    ],
