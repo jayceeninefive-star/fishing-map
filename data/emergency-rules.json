@@ -1,9 +1,29 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-04T17:16:00+00:00",
+ "checkedAt": "2026-11-04T23:40:27+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Lower Nooksack smelt fishery opens",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-nooksack-smelt-fishery-opens-2026-11",
+   "published": "2026-11-04T09:05:44-08:00",
+   "effective": "Nov. 4–Nov. 30, 2026.",
+   "start": "2026-11-04",
+   "end": "2026-11-30",
+   "openEnded": false,
+   "locations": "Nooksack River, from Lummi Nation Reservation Boundary upstream to the yellow marker approximately 0.65 miles upstream of Slater Road at 48° 49’ 30.1”N, 122° 35' 08.3”W.",
+   "action": "Opens longfin smelt dipping.",
+   "species": "Longfin smelt ( Spirinchus thaleichthys).",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Nooksack River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Marine Area 12 (Hood Canal) salmon seasons close Nov. 5",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/marine-area-12-hood-canal-salmon-seasons-close-nov-5-2026-11",
