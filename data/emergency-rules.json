@@ -1,9 +1,33 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-05T23:39:03+00:00",
+ "checkedAt": "2026-11-06T23:10:05+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Upper Green (Duwamish) River closed to fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/upper-green-duwamish-river-closed-fishing-2026-11",
+   "published": "2026-11-06T13:57:58-08:00",
+   "effective": "Nov. 7, 2026, until further notice.",
+   "start": "2026-11-07",
+   "end": null,
+   "openEnded": true,
+   "locations": "Green (Duwamish) River, from Auburn Black Diamond Road Bridge upstream to the Tacoma Municipal Boundary Marker.",
+   "action": "Closes all fishing.",
+   "species": "All species.",
+   "closure": true,
+   "waters": [
+    {
+     "name": "Green River",
+     "county": null
+    },
+    {
+     "name": "Duwamish River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Lower Nooksack smelt fishery opens",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-nooksack-smelt-fishery-opens-2026-11",
