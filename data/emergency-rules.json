@@ -1,21 +1,21 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-06T23:10:05+00:00",
+ "checkedAt": "2026-11-07T05:59:37+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
   {
-   "title": "Upper Green (Duwamish) River closed to fishing",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/upper-green-duwamish-river-closed-fishing-2026-11",
-   "published": "2026-11-06T13:57:58-08:00",
-   "effective": "Nov. 7, 2026, until further notice.",
-   "start": "2026-11-07",
+   "title": "Upper Green (Duwamish) River fishing closure rescinded",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/upper-green-duwamish-river-fishing-closure-rescinded-2026-11",
+   "published": "2026-11-06T17:57:14-08:00",
+   "effective": "Nov. 6, 2026, until further notice.",
+   "start": "2026-11-06",
    "end": null,
    "openEnded": true,
    "locations": "Green (Duwamish) River, from Auburn Black Diamond Road Bridge upstream to the Tacoma Municipal Boundary Marker.",
-   "action": "Closes all fishing.",
+   "action": "Returns to permanent rules listed in the Washington Sport Fishing Rules pamphlet .",
    "species": "All species.",
-   "closure": true,
+   "closure": false,
    "waters": [
     {
      "name": "Green River",
