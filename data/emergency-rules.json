@@ -1,9 +1,29 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-13T11:00:10+00:00",
+ "checkedAt": "2026-11-14T01:27:18+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Lower Columbia River steelhead fishery update",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-columbia-river-steelhead-fishery-update-2026-11",
+   "published": "2026-11-13T16:24:37-08:00",
+   "effective": "Jan. 1– March 31, 2027.",
+   "start": "2027-01-01",
+   "end": "2027-03-31",
+   "openEnded": false,
+   "locations": "Columbia River from The Dalles Dam to Highway 730 at the Washington/Oregon border .",
+   "action": "Closes angling for and retention of steelhead.",
+   "species": "Steelhead.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Columbia River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Upper Green (Duwamish) River fishing closure rescinded",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/upper-green-duwamish-river-fishing-closure-rescinded-2026-11",
@@ -69,21 +89,6 @@
    "marineAreas": [
     "12"
    ]
-  },
-  {
-   "title": "Razor clam digs approved for Mocrocks and Copalis beaches Nov. 7–11",
-   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/razor-clam-digs-approved-mocrocks-and-copalis-beaches-nov-7-11-2026-11",
-   "published": "2026-11-03T14:57:43-08:00",
-   "effective": "Nov. 7–11, 2026.",
-   "start": "2026-11-07",
-   "end": "2026-11-11",
-   "openEnded": false,
-   "locations": "",
-   "action": "Opens Razor clam seasons for Mocrocks and Copalis beaches.",
-   "species": "Razor Clams.",
-   "closure": false,
-   "waters": [],
-   "marineAreas": []
   },
   {
    "title": "Tokul Creek opens for game fish Nov. 1",
