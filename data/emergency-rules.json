@@ -1,9 +1,50 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-17T16:01:27+00:00",
+ "checkedAt": "2026-11-18T00:57:50+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Chum retention opens in deep South Sound, Kennedy Creek, and Carr Inlet",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/chum-retention-opens-deep-south-sound-kennedy-creek-and-carr-inlet-2026-11",
+   "published": "2026-11-17T10:22:07-08:00",
+   "effective": "Immediately, through Dec. 7, 2026.",
+   "start": "2026-11-17",
+   "end": "2026-12-07",
+   "openEnded": false,
+   "locations": "",
+   "action": "Opens chum salmon retention within portions of Marine Area 13 and Kennedy Creek.",
+   "species": "Chum salmon.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Kennedy Creek",
+     "county": null
+    },
+    {
+     "name": "Carr Inlet",
+     "county": null
+    }
+   ],
+   "marineAreas": [
+    "13"
+   ]
+  },
+  {
+   "title": "Razor clam digs approved for Mocrocks and Copalis beaches Nov. 24–28",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/razor-clam-digs-approved-mocrocks-and-copalis-beaches-nov-24-28-2026-11",
+   "published": "2026-11-17T09:53:55-08:00",
+   "effective": "Nov. 24–28, 2026.",
+   "start": "2026-11-24",
+   "end": "2026-11-28",
+   "openEnded": false,
+   "locations": "",
+   "action": "Opens Razor clam seasons for Mocrocks and Copalis beaches.",
+   "species": "Razor Clams.",
+   "closure": false,
+   "waters": [],
+   "marineAreas": []
+  },
   {
    "title": "Lower Columbia River steelhead fishery update",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-columbia-river-steelhead-fishery-update-2026-11",
