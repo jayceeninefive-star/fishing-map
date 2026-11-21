@@ -1,9 +1,39 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-20T02:19:42+00:00",
+ "checkedAt": "2026-11-21T02:16:51+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Lower Calawah and Bogachiel rivers to open for game fish",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-calawah-and-bogachiel-rivers-open-game-fish-2026-11",
+   "published": "2026-11-20T12:05:02-08:00",
+   "effective": "Nov. 23, 2026, until further notice",
+   "start": "2026-11-23",
+   "end": null,
+   "openEnded": true,
+   "locations": "",
+   "action": "Returns game fish seasons to permanent rules listed in the Washington Sport Fishing Rules in portions of the Calawah and Bogachiel rivers. Salmon fishing remains closed. “All species” rules, including gear restrictions, are in effect as listed in the Washington Sport Fishing Rules .",
+   "species": "All species",
+   "closure": false,
+   "waters": [],
+   "marineAreas": []
+  },
+  {
+   "title": "Fishing seasons to reopen on Naselle and Willapa rivers",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/fishing-seasons-reopen-naselle-and-willapa-rivers-2026-11",
+   "published": "2026-11-20T12:03:07-08:00",
+   "effective": "Nov. 23, 2026–March 31, 2027",
+   "start": "2026-11-23",
+   "end": "2027-03-31",
+   "openEnded": false,
+   "locations": "",
+   "action": "Returns game fish seasons to permanent rules listed in the Washington Sport Fishing Rules in the Naselle and Willapa rivers. Opens salmon seasons in the Naselle and Willapa rivers with a reduced adult daily limit. “All species” rules, including gear restrictions, night closures, and areas listed as closed waters, are in effect as listed in the Washington Sport Fishing Rules .",
+   "species": "All species",
+   "closure": false,
+   "waters": [],
+   "marineAreas": []
+  },
   {
    "title": "Chum retention opens in deep South Sound, Kennedy Creek, and Carr Inlet",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/chum-retention-opens-deep-south-sound-kennedy-creek-and-carr-inlet-2026-11",
