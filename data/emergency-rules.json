@@ -1,9 +1,53 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-24T02:13:25+00:00",
+ "checkedAt": "2026-11-24T23:54:01+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Hoh and South Fork Hoh rivers to open for hatchery steelhead fishing",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/hoh-and-south-fork-hoh-rivers-open-hatchery-steelhead-fishing-2026-11",
+   "published": "2026-11-24T09:37:44-08:00",
+   "effective": "Dec. 1, 2026, until further notice.",
+   "start": "2026-12-01",
+   "end": null,
+   "openEnded": true,
+   "locations": "",
+   "action": "Returns Hoh River and South Fork Hoh River game fish seasons to permanent rules listed in the Washington Sport Fishing Rules , except prohibits the use of bait downstream of the Oxbow Campground boat launch beginning Dec. 1. Closes all salmon fishing. “All species” rules, including gear restrictions and restrictions to fishing from a floating device, are in effect as listed in the Washington Sport Fishing Rules .",
+   "species": "All species.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Hoh River",
+     "county": null
+    },
+    {
+     "name": "South Fork Hoh River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Hanford Reach steelhead fishery to close Nov. 30",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/hanford-reach-steelhead-fishery-close-nov-30-2026-11",
+   "published": "2026-11-24T09:02:30-08:00",
+   "effective": "Nov. 30, 2026, until further notice.",
+   "start": "2026-11-30",
+   "end": null,
+   "openEnded": true,
+   "locations": "Columbia River from the I-182 Bridge (Richland) upstream to the Old Hanford townsite powerline crossing.",
+   "action": "Closes steelhead fishing.",
+   "species": "Steelhead.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Columbia River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Lower Calawah and Bogachiel rivers to open for game fish",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/lower-calawah-and-bogachiel-rivers-open-game-fish-2026-11",
