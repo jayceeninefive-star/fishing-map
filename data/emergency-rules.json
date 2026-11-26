@@ -1,9 +1,97 @@
 {
  "source": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/rss",
  "sourcePage": "https://wdfw.wa.gov/fishing/regulations/emergency-rules",
- "checkedAt": "2026-11-24T23:54:01+00:00",
+ "checkedAt": "2026-11-26T03:34:35+00:00",
  "note": "Copied from WDFW's emergency rules RSS feed (the newest ~30 notices). Older rules that are still in effect may not be in the feed.",
  "items": [
+  {
+   "title": "Portions of Chehalis, Humptulips, Satsop, Skookumchuck, and Wynoochee rivers to open to angling Nov. 29",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/portions-chehalis-humptulips-satsop-skookumchuck-and-wynoochee-rivers-open-angling-nov-29-2026-11",
+   "published": "2026-11-25T15:04:30-08:00",
+   "effective": "Nov. 29, 2026, until further notice",
+   "start": "2026-11-29",
+   "end": null,
+   "openEnded": true,
+   "locations": "",
+   "action": "Opens game fish and salmon seasons in portions of the Chehalis, Humptulips, Satsop, and Skookumchuck rivers, and opens game fish season in portions of the Wynoochee River. See below for specific areas and rules.",
+   "species": "Game fish and salmon",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Wynoochee River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Nooksack River chum salmon retention closes Nov. 28",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/nooksack-river-chum-salmon-retention-closes-nov-28-2026-11",
+   "published": "2026-11-25T14:21:31-08:00",
+   "effective": "Nov. 28–Dec. 31, 2026.",
+   "start": "2026-11-28",
+   "end": "2026-12-31",
+   "openEnded": false,
+   "locations": "Nooksack River from the yellow marker approximately 0.65 miles upstream of the Slater Road bridge to the confluence of North and South forks.",
+   "action": "Closes retention of chum salmon.",
+   "species": "Chum salmon.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Nooksack River",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Salmon River to open for hatchery steelhead fishing Dec. 1",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/salmon-river-open-hatchery-steelhead-fishing-dec-1-2026-11",
+   "published": "2026-11-25T14:18:02-08:00",
+   "effective": "Dec. 1, 2026, until further notice.",
+   "start": "2026-12-01",
+   "end": null,
+   "openEnded": true,
+   "locations": "Salmon River (Jefferson County), outside Olympic National Park and Quinault Indian Reservation.",
+   "action": "Opens game fish under permanent rules listed in the Washington Sport Fishing Rules except selective gear rules are in effect.",
+   "species": "Game fish.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Salmon River",
+     "county": "Jefferson"
+    }
+   ],
+   "marineAreas": []
+  },
+  {
+   "title": "Upper Quinault River to open for hatchery steelhead fishing beginning Dec. 1",
+   "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/upper-quinault-river-open-hatchery-steelhead-fishing-beginning-dec-1-2026-11",
+   "published": "2026-11-25T14:16:14-08:00",
+   "effective": "Dec. 1, 2026, until further notice.",
+   "start": "2026-12-01",
+   "end": null,
+   "openEnded": true,
+   "locations": "Upper Quinault River (Grays Harbor/Jefferson County) from the mouth at the upper end of Lake Quinault to Olympic National Park boundary.",
+   "action": "Opens game fish under permanent rules listed in the Washington Sport Fishing Rules except selective gear rules are in effect.",
+   "species": "Game fish.",
+   "closure": false,
+   "waters": [
+    {
+     "name": "Lake Quinault",
+     "county": null
+    },
+    {
+     "name": "Quinault River",
+     "county": null
+    },
+    {
+     "name": "Grays Harbor",
+     "county": null
+    }
+   ],
+   "marineAreas": []
+  },
   {
    "title": "Hoh and South Fork Hoh rivers to open for hatchery steelhead fishing",
    "link": "https://wdfw.wa.gov/fishing/regulations/emergency-rules/hoh-and-south-fork-hoh-rivers-open-hatchery-steelhead-fishing-2026-11",
